@@ -7,7 +7,7 @@ public class ProjetXXX
 {
     public static void main(String[] args) 
     {
-        fenetre fen = new fenetre();
+        accueilFen fen = new accueilFen();
         /*tradFenetre fen = new fenetre();*/
     }
     

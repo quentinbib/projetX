@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 
 
-public class fenetre extends JFrame implements ActionListener
+public class accueilFen extends JFrame implements ActionListener
 {
      
     private JButton boutonTrad;
@@ -33,7 +33,7 @@ public class fenetre extends JFrame implements ActionListener
         }                
         
     }
-    public fenetre()
+    public accueilFen()
     {
         Dimension ecran = Toolkit.getDefaultToolkit().getScreenSize();
         
