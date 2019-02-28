@@ -19,6 +19,7 @@ public class ProjetX
             System.out.println("la lettre "+normal[loopp]+" s'écrit "+morse[loopp]+" en morse");
         } 
     }
+    /////////////////////////////////////////////////////////////////////////
     static void tradnormalmorselettre()
     {
         System.out.println("entrer la lettre à traduire");
