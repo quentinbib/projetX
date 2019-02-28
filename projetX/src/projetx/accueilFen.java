@@ -50,19 +50,19 @@ public class accueilFen extends JFrame implements ActionListener
         
         
         boutonTrad = new JButton ("traducteur");
-        boutonTrad.setBounds(340, 400, 150, 50);
+        boutonTrad.setBounds((int)(width*0.27),(int)(height*0.52), (int)(width*0.11),(int)(height*0.06));
         contenant.add(boutonTrad);
         boutonTrad.addActionListener(this);
         
         boutonEntrainement = new JButton ("entrainement");
-        boutonEntrainement.setBounds(740, 400, 150, 50);
+        boutonEntrainement.setBounds((int)(width*0.57),(int)(height*0.52), (int)(width*0.11),(int)(height*0.06));
         contenant.add(boutonEntrainement);
         boutonEntrainement.addActionListener(this);
         
-        JLabel texte1 = new JLabel();
-        texte1.setBounds(940, 400, 150, 50);
-        contenant.add(texte1);
-        texte1.setText("Ta mere");
+        JLabel nomSite = new JLabel();
+        nomSite.setBounds((int)(width*0.46),(int)(height*0.13), (int)(width*0.11),(int)(height*0.06));
+        contenant.add(nomSite);
+        nomSite.setText("Ta mere");
         
         
           

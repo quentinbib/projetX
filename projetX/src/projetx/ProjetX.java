@@ -3,7 +3,7 @@ package projetx;
  *
  * @author QUENTIN
  */
-public class ProjetXXX 
+public class ProjetX 
 {
     public static void main(String[] args) 
     {
