@@ -10,6 +10,7 @@ public class ProjetX
         accueilFen fen = new accueilFen();
         /*tradFenetre fen = new fenetre();*/
         //sgdfmdldsfefe
+        //edjktjrktjrktrkt
     }
     
 }
