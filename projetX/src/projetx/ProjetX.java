@@ -32,22 +32,25 @@ public class ProjetX
             }
          }
     }
-    static void tradnormalmorsemot(int lettre)
+    static void tradnormalmorsemot()
     {
         
         System.out.println("entrez le mot à traduire");
         String mot = input.nextLine();
-        lettre = mot.length();
+        int lettre = 0;
+        String stringvalueof; 
+        System.out.print("En morse, le mot "+ mot +" s'écrit : ");
         for (int i = 0; i < mot.length(); i++) 
         {
-            lettre = lettre + 1;
+            stringvalueof = String.valueOf(mot.charAt(lettre));
             for (int loop=0; loop < morse.length; loop++)
             {  
-                if (normal[loop].equalsIgnoreCase(mot.charAt(lettre)))
+                if (normal[loop].equalsIgnoreCase(stringvalueof))
                 {
-                    System.out.println("En morse, la lettre "+normal[loop]+" s'écrit : "+morse[loop]);
+                    System.out.print(morse[loop]);
                 } 
-         }
+            }
+            lettre = lettre + 1;
         }
     }
     public static void main(String[] args) 
