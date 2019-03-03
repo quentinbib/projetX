@@ -22,7 +22,6 @@ public class accueilFen extends JFrame implements ActionListener
     {
        if(ev.getSource() == boutonTrad)
         {
-            System.out.println("c'est le bouton boutonTrad");
             tradFenetre fenetre = new tradFenetre();
             setVisible(false);
         }
@@ -50,17 +49,17 @@ public class accueilFen extends JFrame implements ActionListener
         
         
         boutonTrad = new JButton ("traducteur");
-        boutonTrad.setBounds((int)(width*0.27),(int)(height*0.52), (int)(width*0.11),(int)(height*0.06));
+        boutonTrad.setBounds((int)(width*1/3-width*0.11),(int)(height*0.52), (int)(width*0.11),(int)(height*0.06));
         contenant.add(boutonTrad);
         boutonTrad.addActionListener(this);
-        
+
         boutonEntrainement = new JButton ("entrainement");
-        boutonEntrainement.setBounds((int)(width*0.57),(int)(height*0.52), (int)(width*0.11),(int)(height*0.06));
+        boutonEntrainement.setBounds((int)(width*2/3-width*0.11/2),(int)(height*0.52), (int)(width*0.11),(int)(height*0.06));
         contenant.add(boutonEntrainement);
         boutonEntrainement.addActionListener(this);
         
         JLabel nomSite = new JLabel();
-        nomSite.setBounds((int)(width*0.46),(int)(height*0.13), (int)(width*0.11),(int)(height*0.06));
+        nomSite.setBounds((int)(width/2-width*0.11/2),(int)(height*0.13), (int)(width*0.11),(int)(height*0.06));
         contenant.add(nomSite);
         nomSite.setText("Ta mere");
         

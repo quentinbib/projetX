@@ -6,7 +6,8 @@ import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;   
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -15,7 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class tradFenetre extends JFrame implements ActionListener
+public class tradFenInverse extends JFrame implements ActionListener
 {
     private JButton boutonValider;
     private JButton fleche;
@@ -24,12 +25,13 @@ public class tradFenetre extends JFrame implements ActionListener
     {
        if(ev.getSource() == fleche)
         {
-            tradFenInverse fenetre = new tradFenInverse();
+            tradFenetre fenetre = new tradFenetre();
             setVisible(false);
+            //tradFenetre.setVisible(true);
         }
     }
     
-    public tradFenetre()
+    public tradFenInverse()
     {
         Dimension ecran = Toolkit.getDefaultToolkit().getScreenSize();
         
@@ -57,7 +59,7 @@ public class tradFenetre extends JFrame implements ActionListener
         JTextField français = new JTextField();
         français.setBounds((int)(width/2-width*0.40/2),(int)(height*0.28), (int)(width*0.40), (int)(height*0.06));
         français.setHorizontalAlignment(JTextField.CENTER);
-        français.setText("français");
+        français.setText("morse");
         add(français);
         
         fleche = new JButton();
@@ -80,13 +82,13 @@ public class tradFenetre extends JFrame implements ActionListener
         JTextField morse = new JTextField();
         morse.setBounds((int)(width/2-width*0.40/2),(int)(height*0.55), (int)(width*0.40), (int)(height*0.06));
         morse.setHorizontalAlignment(JTextField.CENTER);
-        morse.setText("morse");
+        morse.setText("français");
         add(morse);
         
         boutonValider = new JButton ("traduire");
         boutonValider.setBounds((int)(width/2-width*0.11/2),(int)(height*0.70),(int)(width*0.11),(int)(height*0.06));
         contenant.add(boutonValider);
-        
+
         /*
          /\
         /  \
@@ -99,3 +101,4 @@ public class tradFenetre extends JFrame implements ActionListener
 
     
 }
+
