@@ -19,12 +19,19 @@ public class tradFenetre extends JFrame implements ActionListener
 {
     private JButton boutonValider;
     private JButton fleche;
+    private JButton menu;
+    private JButton volume;
     
     public void actionPerformed(ActionEvent ev)
     {
        if(ev.getSource() == fleche)
         {
             tradFenInverse fenetre = new tradFenInverse();
+            setVisible(false);
+        }
+       if(ev.getSource() == menu)
+        {
+            accueilFen fenetre = new accueilFen();
             setVisible(false);
         }
     }
@@ -61,7 +68,7 @@ public class tradFenetre extends JFrame implements ActionListener
         add(français);
         
         fleche = new JButton();
-        File imageCheck = new File("src\\imageFleche\\arrowgood.jpg");
+        File imageCheck = new File("src\\images\\arrowgood.jpg");
         try
         {
           Image img = ImageIO.read(imageCheck);
@@ -86,6 +93,38 @@ public class tradFenetre extends JFrame implements ActionListener
         boutonValider = new JButton ("traduire");
         boutonValider.setBounds((int)(width/2-width*0.11/2),(int)(height*0.70),(int)(width*0.11),(int)(height*0.06));
         contenant.add(boutonValider);
+        
+        menu = new JButton ("Menu principal");
+        menu.setBounds((int)(width*0.85),(int)(height*0.80),(int)(width*0.09),(int)(height*0.04));
+        contenant.add(menu);
+        menu.addActionListener(this);
+        
+        volume = new JButton();
+        File imageCheck2 = new File("src\\images\\volume.jpg");
+        try
+        {
+          Image img = ImageIO.read(imageCheck2);
+          Image newImg = img.getScaledInstance((int)(width*0.04), (int)(height*0.047), img.SCALE_DEFAULT);
+          volume.setIcon(new ImageIcon(newImg));
+        } 
+        catch (Exception ex) 
+        {
+          System.out.println(ex);
+        }
+        setResizable(true);
+        volume.setBounds((int)(width/2-width*0.034/2),(int)(height*0.82), (int)(width*0.034), (int)(height*0.04));
+        contenant.add(volume);
+        volume.addActionListener(this);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         /*
          /\

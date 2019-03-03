@@ -1,7 +1,6 @@
 package projetx;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.FlowLayout;
