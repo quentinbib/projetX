@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,6 +47,11 @@ public class accueilFen extends JFrame implements ActionListener
         contenant.setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+        JLabel nomSite = new JLabel();
+        nomSite.setFont(new Font("Algerian", Font.PLAIN, 28));
+        nomSite.setBounds((int)(width/2-width*0.11/2),(int)(height*0.13), (int)(width*0.12),(int)(height*0.06));
+        contenant.add(nomSite);
+        nomSite.setText("Ta mere");
         
         boutonTrad = new JButton ("traducteur");
         boutonTrad.setBounds((int)(width*1/3-width*0.11),(int)(height*0.52), (int)(width*0.11),(int)(height*0.06));
@@ -57,10 +63,7 @@ public class accueilFen extends JFrame implements ActionListener
         contenant.add(boutonEntrainement);
         boutonEntrainement.addActionListener(this);
         
-        JLabel nomSite = new JLabel();
-        nomSite.setBounds((int)(width/2-width*0.11/2),(int)(height*0.13), (int)(width*0.11),(int)(height*0.06));
-        contenant.add(nomSite);
-        nomSite.setText("Ta mere");
+        
         
         
           
