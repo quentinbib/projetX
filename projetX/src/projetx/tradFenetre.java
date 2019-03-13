@@ -8,12 +8,14 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;   
 import java.io.File;
+import java.util.Scanner;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
 
 public class tradFenetre extends JFrame implements ActionListener
 {
@@ -34,8 +36,9 @@ public class tradFenetre extends JFrame implements ActionListener
             accueilFen fenetre = new accueilFen();
             setVisible(false);
         }
+       
     }
-    
+    static Scanner entrée = new Scanner (System.in);
     public tradFenetre()
     {
         Dimension ecran = Toolkit.getDefaultToolkit().getScreenSize();
@@ -61,10 +64,11 @@ public class tradFenetre extends JFrame implements ActionListener
         contenant.add(insertTexte);
         insertTexte.setText("↓ Entrez le texte à traduire dans la case ci-dessous ↓");
         
+        String motatraduire = entrée.nextLine();
         JTextField français = new JTextField();
         français.setBounds((int)(width/2-width*0.40/2),(int)(height*0.28), (int)(width*0.40), (int)(height*0.06));
         français.setHorizontalAlignment(JTextField.CENTER);
-        français.setText("français");
+        français.setText(motatraduire);
         add(français);
         
         fleche = new JButton();
