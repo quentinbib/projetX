@@ -8,17 +8,13 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;   
 import java.io.File;
-import java.util.Scanner;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-/*import static projetx.ProjetX.input;
-import static projetx.ProjetX.morse;
-import static projetx.ProjetX.normal;
-*/
+
 public class tradFenetre extends JFrame implements ActionListener
 {
     private JButton boutonValider;
@@ -26,27 +22,11 @@ public class tradFenetre extends JFrame implements ActionListener
     private JButton menu;
     private JButton volume;
     private JTextField francais;
+    private JTextField morse2;
     
-    static Scanner input = new Scanner (System.in);
-    static Scanner entrée = new Scanner (System.in);
     static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-.",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
     static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-    
-    static void tradnormalmorselettre()
-    {
-        System.out.println("entrer la lettre à traduire");
-        String lettre = entrée.nextLine();
-        for (int loop=0; loop < morse.length; loop++)
-         {
-            if (normal[loop].equalsIgnoreCase(lettre))
-            {
-                System.out.println("En morse, la lettre "+normal[loop]+" s'écrit : "+morse[loop]);
-            }
-         }
-    }
-    
-        
-    
+
     public void actionPerformed(ActionEvent ev)
     {
        if(ev.getSource() == fleche)
@@ -62,26 +42,24 @@ public class tradFenetre extends JFrame implements ActionListener
        if(ev.getSource() == boutonValider)
         {
             String nouvotexte = francais.getText();
-            System.out.println(nouvotexte);
-            /*int lettre = 0;
+            String motEnMorse = "";
+            int lettre = 0;
             String stringvalueof; 
             for (int i = 0; i < nouvotexte.length(); i++) 
             {
                 stringvalueof = String.valueOf(nouvotexte.charAt(lettre));
-                for (int loop=0; loop < morse.length; loop++)
+                for (int loop=0; loop < normal.length; loop++)
                 {  
                     if (normal[loop].equalsIgnoreCase(stringvalueof))
                     {
-                        System.out.print(morse[loop]);
+                        motEnMorse = (motEnMorse + ((" ") + (morse[loop])));
                     } 
                 }
                 lettre = lettre + 1;
-            }*/
-           
-        }
-       
+            }
+            morse2.setText(motEnMorse);
+        } 
     }
-
     public tradFenetre()
     {
         Dimension ecran = Toolkit.getDefaultToolkit().getScreenSize();
@@ -107,12 +85,11 @@ public class tradFenetre extends JFrame implements ActionListener
         contenant.add(insertTexte);
         insertTexte.setText("↓ Entrez le texte à traduire dans la case ci-dessous ↓");
         
-        String motatraduire = entrée.nextLine();
-        JTextField français = new JTextField();
-        français.setBounds((int)(width/2-width*0.40/2),(int)(height*0.28), (int)(width*0.40), (int)(height*0.06));
-        français.setHorizontalAlignment(JTextField.CENTER);
-        français.setText(motatraduire);
-        add(français);
+        francais = new JTextField();
+        francais.setBounds((int)(width/2-width*0.40/2),(int)(height*0.28), (int)(width*0.40), (int)(height*0.06));
+        francais.setHorizontalAlignment(JTextField.CENTER);
+        francais.setText("français");
+        add(francais);
         
         fleche = new JButton();
         File imageCheck = new File("src\\images\\arrowgood.jpg");
@@ -131,11 +108,11 @@ public class tradFenetre extends JFrame implements ActionListener
         contenant.add(fleche);
         fleche.addActionListener(this);
         
-        JTextField morse = new JTextField();
-        morse.setBounds((int)(width/2-width*0.40/2),(int)(height*0.55), (int)(width*0.40), (int)(height*0.06));
-        morse.setHorizontalAlignment(JTextField.CENTER);
-        morse.setText("morse");
-        add(morse);
+        morse2 = new JTextField();
+        morse2.setBounds((int)(width/2-width*0.40/2),(int)(height*0.55), (int)(width*0.40), (int)(height*0.06));
+        morse2.setHorizontalAlignment(JTextField.CENTER);
+        morse2.setText("morse");
+        add(morse2);
         
         boutonValider = new JButton ("traduire");
         boutonValider.setBounds((int)(width/2-width*0.11/2),(int)(height*0.70),(int)(width*0.11),(int)(height*0.06));
@@ -163,26 +140,8 @@ public class tradFenetre extends JFrame implements ActionListener
         volume.setBounds((int)(width/2-width*0.034/2),(int)(height*0.82), (int)(width*0.034), (int)(height*0.04));
         contenant.add(volume);
         volume.addActionListener(this);
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        /*
-         /\
-        /  \
-         ||
-         ||
-         ||
-        \  /
-         \/*/
+    }
 }
 
     
-}
+

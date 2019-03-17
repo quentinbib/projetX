@@ -7,7 +7,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -22,6 +21,11 @@ public class tradFenInverse extends JFrame implements ActionListener
     private JButton fleche;
     private JButton menu;
     private JButton volume;
+    private JTextField morse2;
+    private JTextField francais;
+
+    static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-.",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+    static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
     
     public void actionPerformed(ActionEvent ev)
     {
@@ -35,6 +39,26 @@ public class tradFenInverse extends JFrame implements ActionListener
         {
             accueilFen fenetre = new accueilFen();
             setVisible(false);
+        }
+       if(ev.getSource() == boutonValider)
+        {
+            String nouvotexte = morse2.getText();
+            String motEnMorse = "";
+            int lettre = 0;
+            String stringvalueof; 
+            for (int i = 0; i < nouvotexte.length(); i++) 
+            {
+                stringvalueof = String.valueOf(nouvotexte.charAt(lettre));
+                for (int loop=0; loop < morse.length; loop++)
+                {  
+                    if (morse[loop].equalsIgnoreCase(stringvalueof))
+                    {
+                        motEnMorse = (motEnMorse + ((" ") + (normal[loop])));
+                    } 
+                }
+                lettre = lettre + 1;
+            }
+            francais.setText(motEnMorse);
         }
     }
     
@@ -63,11 +87,11 @@ public class tradFenInverse extends JFrame implements ActionListener
         contenant.add(insertTexte);
         insertTexte.setText("↓ Entrez le texte à traduire dans la case ci-dessous ↓");
         
-        JTextField français = new JTextField();
-        français.setBounds((int)(width/2-width*0.40/2),(int)(height*0.28), (int)(width*0.40), (int)(height*0.06));
-        français.setHorizontalAlignment(JTextField.CENTER);
-        français.setText("morse");
-        add(français);
+        morse2 = new JTextField();
+        morse2.setBounds((int)(width/2-width*0.40/2),(int)(height*0.28), (int)(width*0.40), (int)(height*0.06));
+        morse2.setHorizontalAlignment(JTextField.CENTER);
+        morse2.setText("morse");
+        add(morse2);
         
         fleche = new JButton();
         File imageCheck = new File("src\\images\\arrowgood.jpg");
@@ -85,16 +109,17 @@ public class tradFenInverse extends JFrame implements ActionListener
         fleche.setBounds((int)(width/2-width*0.03/2),(int)(height*0.40), (int)(width*0.03), (int)(height*0.09));
         contenant.add(fleche);
         fleche.addActionListener(this);
-        
-        JTextField morse = new JTextField();
-        morse.setBounds((int)(width/2-width*0.40/2),(int)(height*0.55), (int)(width*0.40), (int)(height*0.06));
-        morse.setHorizontalAlignment(JTextField.CENTER);
-        morse.setText("français");
-        add(morse);
+                
+        francais = new JTextField();
+        francais.setBounds((int)(width/2-width*0.40/2),(int)(height*0.55), (int)(width*0.40), (int)(height*0.06));
+        francais.setHorizontalAlignment(JTextField.CENTER);
+        francais.setText("français");
+        add(francais);
         
         boutonValider = new JButton ("traduire");
         boutonValider.setBounds((int)(width/2-width*0.11/2),(int)(height*0.70),(int)(width*0.11),(int)(height*0.06));
         contenant.add(boutonValider);
+        boutonValider.addActionListener(this);
 
         menu = new JButton ("Menu principal");
         menu.setBounds((int)(width*0.85),(int)(height*0.80),(int)(width*0.09),(int)(height*0.04));
