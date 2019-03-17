@@ -79,6 +79,7 @@ public class tradFenetre extends JFrame implements ActionListener
             }*/
            
         }
+       
     }
     
     public tradFenetre()
@@ -106,10 +107,11 @@ public class tradFenetre extends JFrame implements ActionListener
         contenant.add(insertTexte);
         insertTexte.setText("↓ Entrez le texte à traduire dans la case ci-dessous ↓");
         
+        String motatraduire = entrée.nextLine();
         JTextField français = new JTextField();
         français.setBounds((int)(width/2-width*0.40/2),(int)(height*0.28), (int)(width*0.40), (int)(height*0.06));
         français.setHorizontalAlignment(JTextField.CENTER);
-        français.setText("français");
+        français.setText(motatraduire);
         add(français);
         
         fleche = new JButton();
