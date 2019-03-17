@@ -8,19 +8,44 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;   
 import java.io.File;
+import java.util.Scanner;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
+/*import static projetx.ProjetX.input;
+import static projetx.ProjetX.morse;
+import static projetx.ProjetX.normal;
+*/
 public class tradFenetre extends JFrame implements ActionListener
 {
     private JButton boutonValider;
     private JButton fleche;
     private JButton menu;
     private JButton volume;
+    private JTextField francais;
+    
+    static Scanner input = new Scanner (System.in);
+    static Scanner entrée = new Scanner (System.in);
+    static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-.",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+    static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+    
+    static void tradnormalmorselettre()
+    {
+        System.out.println("entrer la lettre à traduire");
+        String lettre = entrée.nextLine();
+        for (int loop=0; loop < morse.length; loop++)
+         {
+            if (normal[loop].equalsIgnoreCase(lettre))
+            {
+                System.out.println("En morse, la lettre "+normal[loop]+" s'écrit : "+morse[loop]);
+            }
+         }
+    }
+    
+        
     
     public void actionPerformed(ActionEvent ev)
     {
@@ -33,6 +58,26 @@ public class tradFenetre extends JFrame implements ActionListener
         {
             accueilFen fenetre = new accueilFen();
             setVisible(false);
+        }
+       if(ev.getSource() == boutonValider)
+        {
+            String nouvotexte = francais.getText();
+            System.out.println(nouvotexte);
+            /*int lettre = 0;
+            String stringvalueof; 
+            for (int i = 0; i < nouvotexte.length(); i++) 
+            {
+                stringvalueof = String.valueOf(nouvotexte.charAt(lettre));
+                for (int loop=0; loop < morse.length; loop++)
+                {  
+                    if (normal[loop].equalsIgnoreCase(stringvalueof))
+                    {
+                        System.out.print(morse[loop]);
+                    } 
+                }
+                lettre = lettre + 1;
+            }*/
+           
         }
     }
     
@@ -93,6 +138,7 @@ public class tradFenetre extends JFrame implements ActionListener
         boutonValider = new JButton ("traduire");
         boutonValider.setBounds((int)(width/2-width*0.11/2),(int)(height*0.70),(int)(width*0.11),(int)(height*0.06));
         contenant.add(boutonValider);
+        boutonValider.addActionListener(this);
         
         menu = new JButton ("Menu principal");
         menu.setBounds((int)(width*0.85),(int)(height*0.80),(int)(width*0.09),(int)(height*0.04));

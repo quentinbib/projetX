@@ -7,6 +7,7 @@ import java.util.Scanner;
  */
 public class ProjetX 
 {
+/*
     static Scanner input = new Scanner (System.in);
     static Scanner entrée = new Scanner (System.in);
     static String [] morse= {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-.",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
@@ -52,9 +53,11 @@ public class ProjetX
         }
         System.out.println();
     }
+*/
     public static void main(String[] args) 
     {
         accueilFen fen = new accueilFen();
+/*
         int choix = -1;
         while(choix!=0)
         {
@@ -78,5 +81,7 @@ public class ProjetX
                 tradnormalmorsemot();
             }
         } 
+        */
     }
+
 }
