@@ -81,7 +81,7 @@ public class tradFenetre extends JFrame implements ActionListener
         }
        
     }
-    
+
     public tradFenetre()
     {
         Dimension ecran = Toolkit.getDefaultToolkit().getScreenSize();
