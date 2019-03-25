@@ -28,7 +28,8 @@ public class accueilFen extends JFrame implements ActionListener
        
        if(ev.getSource() == boutonEntrainement)
         {
-            System.out.println("c'est le bouton boutonEntrainement");
+            entrainementFenetre fenetre = new entrainementFenetre();
+            setVisible(false);
         }                
         
     }
