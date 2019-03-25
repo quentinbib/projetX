@@ -24,8 +24,8 @@ public class tradFenetre extends JFrame implements ActionListener
     private JTextField francais;
     private JTextField morse2;
     
-    static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-.",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
-    static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+    static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-.",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..","-----",".----","..---","...--","....-",".....","-....","--...","---..","----."};
+    static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"};
 
     public void actionPerformed(ActionEvent ev)
     {
@@ -34,7 +34,7 @@ public class tradFenetre extends JFrame implements ActionListener
             tradFenInverse fenetre = new tradFenInverse();
             setVisible(false);
         }
-       if(ev.getSource() == menu)
+       if(ev.getSource() == menu)   
         {
             accueilFen fenetre = new accueilFen();
             setVisible(false);
@@ -43,7 +43,7 @@ public class tradFenetre extends JFrame implements ActionListener
         {
             String nouvotexte = francais.getText();
             String motEnMorse = "";
-            int lettre = 0;
+            int lettre = 0; 
             String stringvalueof; 
             for (int i = 0; i < nouvotexte.length(); i++) 
             {

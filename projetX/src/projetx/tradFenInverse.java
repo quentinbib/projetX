@@ -24,8 +24,8 @@ public class tradFenInverse extends JFrame implements ActionListener
     private JTextField morse2;
     private JTextField francais;
 
-    static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-.",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
-    static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+    static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-.",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..","-----",".----","..---","...--","....-",".....","-....","--...","---..","----."};
+    static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"};
     
     public void actionPerformed(ActionEvent ev)
     {
@@ -46,12 +46,14 @@ public class tradFenInverse extends JFrame implements ActionListener
             String motEnMorse = "";
             int lettre = 0;
             String stringvalueof; 
-            for (int i = 0; i < nouvotexte.length(); i++) 
+            String[] morsec = nouvotexte.split(" ");
+            for (int i = 0; i < morsec.length; i++) 
             {
-                stringvalueof = String.valueOf(nouvotexte.charAt(lettre));
+                //  stringvalueof = String.valueOf(nouvotexte.charAt(lettre));
+                
                 for (int loop=0; loop < morse.length; loop++)
                 {  
-                    if (morse[loop].equalsIgnoreCase(stringvalueof))
+                    if (morse[loop].equalsIgnoreCase(morsec[i]))
                     {
                         motEnMorse = (motEnMorse + ((" ") + (normal[loop])));
                     } 
