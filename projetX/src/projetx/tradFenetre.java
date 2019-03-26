@@ -3,6 +3,7 @@ package projetx;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -24,8 +25,8 @@ public class tradFenetre extends JFrame implements ActionListener
     private JTextField francais;
     private JTextField morse2;
     
-    static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-.",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..","-----",".----","..---","...--","....-",".....","-....","--...","---..","----."};
-    static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"};
+    static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-.",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..","-----",".----","..---","...--","....-",".....","-....","--...","---..","----.",""};
+    static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"," "};
 
     public void actionPerformed(ActionEvent ev)
     {
@@ -57,7 +58,9 @@ public class tradFenetre extends JFrame implements ActionListener
                 }
                 lettre = lettre + 1;
             }
+            Font font1 = new Font("", Font.PLAIN, 25);
             morse2.setText(motEnMorse);
+            morse2.setFont(font1);
         } 
     }
     public tradFenetre()
