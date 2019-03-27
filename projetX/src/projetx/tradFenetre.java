@@ -174,6 +174,10 @@ public class tradFenetre extends JFrame implements ActionListener
         contenant.add(volume);
         volume.addActionListener(this);
         
+        JLabel affichLettre = new JLabel();
+        traduire.setBounds((int)(width*0.05),(int)(height*0.00005), (int)(width*0.055), (int)(height*0.7));
+        contenant.add(affichLettre);
+        traduire.setText("<html>A<br/>B<br/>C<br/>D<br/>E<br/>F<br/>G<br/>H<br/>I<br/>J<br/>K<br/>L<br/>M<br/>N<br/>O<br/>P<br/>Q<br/>R<br/>S<br/>T<br/>U<br/>V<br/>W<br/>X<br/>Y<br/>Z</html>");
          
     }
 }
