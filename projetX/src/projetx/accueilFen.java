@@ -8,6 +8,11 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JLabel;
 
 
@@ -22,7 +27,15 @@ public class accueilFen extends JFrame implements ActionListener
     {
        if(ev.getSource() == boutonTrad)
         {
-            tradFenetre fenetre = new tradFenetre();
+           try {
+               tradFenetre fenetre = new tradFenetre();
+           } catch (UnsupportedAudioFileException ex) {
+               Logger.getLogger(accueilFen.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (IOException ex) {
+               Logger.getLogger(accueilFen.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (LineUnavailableException ex) {
+               Logger.getLogger(accueilFen.class.getName()).log(Level.SEVERE, null, ex);
+           }
             setVisible(false);
         }
        

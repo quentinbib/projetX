@@ -9,12 +9,21 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;   
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import sun.applet.Main;
 
 public class tradFenetre extends JFrame implements ActionListener
 {
@@ -25,9 +34,18 @@ public class tradFenetre extends JFrame implements ActionListener
     private JTextField francais;
     private JTextField morse2;
     
-    static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-.",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..","-----",".----","..---","...--","....-",".....","-....","--...","---..","----.",""};
+    
+    static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..","-----",".----","..---","...--","....-",".....","-....","--...","---..","----.",""};
     static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"," "};
 
+    public static void sound () throws UnsupportedAudioFileException, IOException, LineUnavailableException
+    {
+        String soundName = "src/sonVolume/longKim.wav";    
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+        clip.start();
+    }
     public void actionPerformed(ActionEvent ev)
     {
        if(ev.getSource() == fleche)
@@ -62,8 +80,20 @@ public class tradFenetre extends JFrame implements ActionListener
             morse2.setText(motEnMorse);
             morse2.setFont(font1);
         } 
+       if(ev.getSource() == volume)
+        {
+           try {
+               sound();
+           } catch (UnsupportedAudioFileException ex) {
+               Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (IOException ex) {
+               Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (LineUnavailableException ex) {
+               Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
+           }
+        }
     }
-    public tradFenetre()
+    public tradFenetre() throws UnsupportedAudioFileException, IOException, LineUnavailableException
     {
         Dimension ecran = Toolkit.getDefaultToolkit().getScreenSize();
         
@@ -143,6 +173,8 @@ public class tradFenetre extends JFrame implements ActionListener
         volume.setBounds((int)(width/2-width*0.034/2),(int)(height*0.82), (int)(width*0.034), (int)(height*0.04));
         contenant.add(volume);
         volume.addActionListener(this);
+        
+         
     }
 }
 
