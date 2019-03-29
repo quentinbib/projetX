@@ -38,9 +38,18 @@ public class tradFenetre extends JFrame implements ActionListener
     static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..","-----",".----","..---","...--","....-",".....","-....","--...","---..","----.",""};
     static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"," "};
 
-    public static void sound () throws UnsupportedAudioFileException, IOException, LineUnavailableException
+    public static void sonLong () throws UnsupportedAudioFileException, IOException, LineUnavailableException
     {
         String soundName = "src/sonVolume/longKim.wav";    
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+        clip.start();
+    }
+    
+    public static void sonCourt () throws UnsupportedAudioFileException, IOException, LineUnavailableException
+    {
+        String soundName = "src/sonVolume/courtKim.wav";    
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
         Clip clip = AudioSystem.getClip();
         clip.open(audioInputStream);
@@ -58,10 +67,11 @@ public class tradFenetre extends JFrame implements ActionListener
             accueilFen fenetre = new accueilFen();
             setVisible(false);
         }
+       String motEnMorse = "";
        if(ev.getSource() == boutonValider)
         {
             String nouvotexte = francais.getText();
-            String motEnMorse = "";
+            
             int lettre = 0; 
             String stringvalueof; 
             for (int i = 0; i < nouvotexte.length(); i++) 
@@ -80,10 +90,72 @@ public class tradFenetre extends JFrame implements ActionListener
             morse2.setText(motEnMorse);
             morse2.setFont(font1);
         } 
+       
        if(ev.getSource() == volume)
         {
+            //motEnMorse.toCharArray();
+            String trait = "-";
+            String point = ".";
+            /*motEnMorse.split("");
+            for (int i = 0; i < motEnMorse.length(); i++) {
+                {
+                    System.out.println(motEnMorse);
+                }
+            }*/
+           // char[]myCharArray = motEnMorse.toCharArray();
+            //String s;
+            String[] arrayDeString = motEnMorse.split("");
+            for (int i = 0; i < arrayDeString.length; i++) 
+            {
+                
+               // s = String.valueOf(myCharArray[i]);
+                
+              
+               // if (motEnMorse.equalsIgnoreCase(trait))
+                if (arrayDeString[i].equalsIgnoreCase(trait))
+                {
+                    System.out.println("trait");
+                }
+                //else if (motEnMorse.equalsIgnoreCase(point))
+                else if (arrayDeString[i].equalsIgnoreCase(point))
+                {
+                    System.out.println("point");
+                }
+                        
+                
+            }
+            /*
+            System.out.println("");
+            String trait = "-";
+            String point = ".";
+            char[] chars = motEnMorse.toCharArray();
+            for (int i = 0; i < chars.length; i++) 
+            {
+                if (char[i].equalsIgnoreCase(trait))
+                {
+                
+                }
+            }
+            motEnMorse.S
+            int lettre = 0; 
+            String stringvalueof; 
+            for (int i = 0; i < motEnMorse.length(); i++) 
+            {
+                stringvalueof = String.valueOf(motEnMorse.charAt(lettre));
+                for (int loop=0; loop < motEnMorse.length; loop++)
+                {  
+                    if (motEnMorse[loop].equalsIgnoreCase(stringvalueof))
+                    {
+                        motEnMorse = (motEnMorse + ((" ") + (morse[loop])));
+                    } 
+                }
+                lettre = lettre + 1;
+            }
+            
+            
+            
            try {
-               sound();
+               sonLong();
            } catch (UnsupportedAudioFileException ex) {
                Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
            } catch (IOException ex) {
@@ -91,10 +163,13 @@ public class tradFenetre extends JFrame implements ActionListener
            } catch (LineUnavailableException ex) {
                Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
            }
-        }
+        }*/
+      
+    }
     }
     public tradFenetre() throws UnsupportedAudioFileException, IOException, LineUnavailableException
     {
+        
         Dimension ecran = Toolkit.getDefaultToolkit().getScreenSize();
         
         int width = (int) ecran.getWidth();
@@ -174,12 +249,45 @@ public class tradFenetre extends JFrame implements ActionListener
         contenant.add(volume);
         volume.addActionListener(this);
         
-        JLabel affichLettre = new JLabel();
-        traduire.setBounds((int)(width*0.05),(int)(height*0.00005), (int)(width*0.055), (int)(height*0.7));
-        contenant.add(affichLettre);
-        traduire.setText("<html>A<br/>B<br/>C<br/>D<br/>E<br/>F<br/>G<br/>H<br/>I<br/>J<br/>K<br/>L<br/>M<br/>N<br/>O<br/>P<br/>Q<br/>R<br/>S<br/>T<br/>U<br/>V<br/>W<br/>X<br/>Y<br/>Z</html>");
-         
+        Font font2 = new Font("", Font.PLAIN, 18);
+        JLabel AToM = new JLabel();
+        AToM.setBounds((int)(width*0.06),(int)(height*0.02), (int)(width*0.055), (int)(height*0.9));
+        AToM.setText("<html>A<br/><br/>B<br/><br/>C<br/><br/>D<br/><br/>E<br/><br/>F<br/><br/>G<br/><br/>H<br/><br/>I<br/><br/>J<br/><br/>K<br/><br/>L<br/><br/>M</html>");
+        AToM.setFont(font2); 
+        contenant.add(AToM);
+        
+        JLabel MorseAToM = new JLabel();
+        MorseAToM.setBounds((int)(width*0.09),(int)(height*0.02), (int)(width*0.055), (int)(height*0.9));
+        MorseAToM.setText("<html>.-<br/><br/>-...<br/><br/>-.-.<br/><br/>-..<br/><br/>.<br/><br/>..-.<br/><br/>--.<br/><br/>....<br/><br/>..<br/><br/>.---<br/><br/>-.-<br/><br/>.-..<br/><br/>--</html>");
+        MorseAToM.setFont(font2);
+        contenant.add(MorseAToM);
+        
+        JLabel NToZ = new JLabel();
+        NToZ.setBounds((int)(width*0.15),(int)(height*0.02), (int)(width*0.055), (int)(height*0.9));
+        NToZ.setText("<html>N<br/><br/>O<br/><br/>P<br/><br/>Q<br/><br/>R<br/><br/>S<br/><br/>T<br/><br/>U<br/><br/>V<br/><br/>W<br/><br/>X<br/><br/>Y<br/><br/>Z</html>");
+        NToZ.setFont(font2);
+        contenant.add(NToZ);
+        
+        JLabel MorseNToZ = new JLabel();
+        MorseNToZ.setBounds((int)(width*0.18),(int)(height*0.02), (int)(width*0.055), (int)(height*0.9));
+        MorseNToZ.setText("<html>-.<br/><br/>---<br/><br/>.--.<br/><br/>--.-<br/><br/>.-.<br/><br/>...<br/><br/>-<br/><br/>..-<br/><br/>...-<br/><br/>.--<br/><br/>-..-<br/><br/>-.--<br/><br/><--..</html>");
+        MorseNToZ.setFont(font2); 
+        contenant.add(MorseNToZ);
+        
+        JLabel chiffre = new JLabel();
+        chiffre.setBounds((int)(width*0.83),(int)(height*0.02), (int)(width*0.055), (int)(height*0.8));
+        chiffre.setText("<html>0<br/><br/>1<br/><br/>2<br/><br/>3<br/><br/>4<br/><br/>5<br/><br/>6<br/><br/>7<br/><br/>8<br/><br/>9</html>");
+        chiffre.setFont(font2);
+        contenant.add(chiffre);
+        
+        JLabel MorseChiffre = new JLabel();
+        MorseChiffre.setBounds((int)(width*0.86),(int)(height*0.02), (int)(width*0.055), (int)(height*0.8));
+        MorseChiffre.setText("<html>-----<br/><br/>.----.<br/><br/>..---<br/><br/>...--<br/><br/>....-<br/><br/>.....<br/><br/>-....<br/><br/>--...<br/><br/>---..<br/><br/>----.</html>");
+        MorseChiffre.setFont(font2); 
+        contenant.add(MorseChiffre);
+        
     }
+    
 }
 
     
