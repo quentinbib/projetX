@@ -54,14 +54,6 @@ public class tradFenetre extends JFrame implements ActionListener
            clip.open(audioInputStream);
            clip.start();
        }
-    public static void sonSilence () throws UnsupportedAudioFileException, IOException, LineUnavailableException
-    {
-        String soundName = "src/sonVolume/silenceee.wav";    
-        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
-        Clip clip = AudioSystem.getClip();
-        clip.open(audioInputStream);
-        clip.start();
-    }
     public static void sonLongKim () throws UnsupportedAudioFileException, IOException, LineUnavailableException
     {
         String soundName = "src/sonVolume/longKim.wav";    
@@ -123,11 +115,6 @@ public class tradFenetre extends JFrame implements ActionListener
             String[] arrayDeString = texteCase.split("");
             for (int i = 0; i < arrayDeString.length; i++) 
             {
-                
-               // s = String.valueOf(myCharArray[i]);
-                
-              
-               // if (motEnMorse.equalsIgnoreCase(trait))
                 if (arrayDeString[i].equalsIgnoreCase(trait))
                 {
                     try 
@@ -148,7 +135,6 @@ public class tradFenetre extends JFrame implements ActionListener
                     {
 			e.printStackTrace();
 		    }
-                    System.out.println("trait");
                 }
                 else if (arrayDeString[i].equalsIgnoreCase(point))
                 {
@@ -170,8 +156,6 @@ public class tradFenetre extends JFrame implements ActionListener
                     {
 			e.printStackTrace();
 		    }
-                    
-                    System.out.println("point");
                 }
                 else
                 {
