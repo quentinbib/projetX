@@ -5,14 +5,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 
@@ -63,7 +67,7 @@ public class accueilFen extends JFrame implements ActionListener
         
         JLabel nomSite = new JLabel();
         nomSite.setFont(new Font("Algerian", Font.PLAIN, 28));
-        nomSite.setBounds((int)(width/2-width*0.17/2),(int)(height*0.13), (int)(width*0.15),(int)(height*0.06));
+        nomSite.setBounds((int)(width*0.39),(int)(height*0.13), (int)(width*0.15),(int)(height*0.06));
         contenant.add(nomSite);
         nomSite.setText("El Traductor");
         
@@ -77,6 +81,21 @@ public class accueilFen extends JFrame implements ActionListener
         contenant.add(boutonEntrainement);
         boutonEntrainement.addActionListener(this);
 
+        JButton operator = new JButton();
+        File imageCheck = new File("src\\images\\telegraphOperator.jpg");
+        try
+        {
+          Image img = ImageIO.read(imageCheck);
+          Image newImg = img.getScaledInstance((int)(width*0.4), (int)(height*0.35), img.SCALE_DEFAULT);
+          operator.setIcon(new ImageIcon(newImg));
+        } 
+        catch (Exception ex) 
+        {
+          System.out.println(ex);
+        }
+        setResizable(true);
+        operator.setBounds((int)(width*0.6),(int)(height*0.03), (int)(width*0.4), (int)(height*0.35));
+        contenant.add(operator);
           
     }     
 }

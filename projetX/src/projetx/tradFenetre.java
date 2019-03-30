@@ -22,6 +22,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import sun.applet.Main;
 
@@ -119,7 +120,7 @@ public class tradFenetre extends JFrame implements ActionListener
                 {
                     try 
                     {
-                        sonLong();
+                        sonLongKim();
                     } catch (UnsupportedAudioFileException ex) 
                     {
                         Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
@@ -140,7 +141,7 @@ public class tradFenetre extends JFrame implements ActionListener
                 {
                     try 
                     {
-                        sonCourt();
+                        sonCourtKim();
                     } catch (UnsupportedAudioFileException ex) 
                     {
                         Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
@@ -195,14 +196,13 @@ public class tradFenetre extends JFrame implements ActionListener
         traduire.setText("traducteur");
         
         JLabel insertTexte = new JLabel();
-        insertTexte.setBounds((int)(width/2-width*0.225/2),(int)(height*0.19), (int)(width*0.225), (int)(height*0.06));
+        insertTexte.setBounds((int)(width*0.36),(int)(height*0.19), (int)(width*0.35), (int)(height*0.06));
         contenant.add(insertTexte);
-        insertTexte.setText("↓ Entrez le texte à traduire dans la case ci-dessous ↓");
+        insertTexte.setText("↓ Entrez le texte en français à traduire dans la case ci-dessous ↓");
         
         francais = new JTextField();
         francais.setBounds((int)(width/2-width*0.40/2),(int)(height*0.28), (int)(width*0.40), (int)(height*0.06));
         francais.setHorizontalAlignment(JTextField.CENTER);
-        francais.setText("français");
         add(francais);
         
         fleche = new JButton();

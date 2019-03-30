@@ -28,6 +28,7 @@ public class entrainementFenetre extends JFrame implements ActionListener
     private JButton noob;
     private JButton standard;
     private JButton bilingue;
+    private JButton menu;
     public void actionPerformed(ActionEvent ev)
     {
     if(ev.getSource() == noob)
@@ -41,6 +42,11 @@ public class entrainementFenetre extends JFrame implements ActionListener
     if(ev.getSource() == bilingue)
     {
         
+    }
+    if(ev.getSource() == menu)   
+    {
+        accueilFen fenetre = new accueilFen();
+        setVisible(false);
     }
     }
     public entrainementFenetre()
@@ -60,7 +66,7 @@ public class entrainementFenetre extends JFrame implements ActionListener
         
         JLabel nomSite = new JLabel();
         nomSite.setFont(new Font("Algerian", Font.PLAIN, 28));
-        nomSite.setBounds((int)(width/2-width*0.11/2),(int)(height*0.13), (int)(width*0.5),(int)(height*0.06));
+        nomSite.setBounds((int)(width*0.37),(int)(height*0.13), (int)(width*0.5),(int)(height*0.06));
         contenant.add(nomSite);
         nomSite.setText("Choisissez une difficulté");
         
@@ -78,6 +84,11 @@ public class entrainementFenetre extends JFrame implements ActionListener
         bilingue.setBounds((int)(width/2-width*0.11/2),(int)(height*0.62), (int)(width*0.11),(int)(height*0.06));
         contenant.add(bilingue);
         bilingue.addActionListener(this);
+        
+        menu = new JButton ("Menu principal");
+        menu.setBounds((int)(width*0.85),(int)(height*0.80),(int)(width*0.09),(int)(height*0.04));
+        contenant.add(menu);
+        menu.addActionListener(this);
     }
 }
 

@@ -3,6 +3,7 @@ package projetx;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -18,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class tradFenInverse extends JFrame implements ActionListener
@@ -102,15 +104,17 @@ public class tradFenInverse extends JFrame implements ActionListener
         traduire.setText("traducteur");
         
         JLabel insertTexte = new JLabel();
-        insertTexte.setBounds((int)(width/2-width*0.225/2),(int)(height*0.19), (int)(width*0.225), (int)(height*0.06));
+        insertTexte.setBounds((int)(width*0.365),(int)(height*0.19), (int)(width*0.35), (int)(height*0.06));
         contenant.add(insertTexte);
-        insertTexte.setText("↓ Entrez le texte à traduire dans la case ci-dessous ↓");
+        insertTexte.setText("↓ Entrez le texte en morse à traduire dans la case ci-dessous ↓");
         
         morse2 = new JTextField();
         morse2.setBounds((int)(width/2-width*0.40/2),(int)(height*0.28), (int)(width*0.40), (int)(height*0.06));
         morse2.setHorizontalAlignment(JTextField.CENTER);
-        morse2.setText("morse");
+        Font font1 = new Font("", Font.PLAIN, 25);
+        morse2.setFont(font1);
         add(morse2);
+        
         
         fleche = new JButton();
         File imageCheck = new File("src\\images\\arrowgood.jpg");
@@ -145,7 +149,7 @@ public class tradFenInverse extends JFrame implements ActionListener
         contenant.add(menu);
         menu.addActionListener(this);
         
-        volume = new JButton();
+        /*volume = new JButton();
         File imageCheck2 = new File("src\\images\\volume.jpg");
         try
         {
@@ -160,15 +164,44 @@ public class tradFenInverse extends JFrame implements ActionListener
         setResizable(true);
         volume.setBounds((int)(width/2-width*0.034/2),(int)(height*0.82), (int)(width*0.034), (int)(height*0.04));
         contenant.add(volume);
-        volume.addActionListener(this);
-        /*
-         /\
-        /  \
-         ||
-         ||
-         ||
-        \  /
-         \/*/
+        volume.addActionListener(this);*/
+        
+        Font font2 = new Font("", Font.PLAIN, 18);
+        JLabel AToM = new JLabel();
+        AToM.setBounds((int)(width*0.06),(int)(height*0.02), (int)(width*0.055), (int)(height*0.9));
+        AToM.setText("<html>A<br/><br/>B<br/><br/>C<br/><br/>D<br/><br/>E<br/><br/>F<br/><br/>G<br/><br/>H<br/><br/>I<br/><br/>J<br/><br/>K<br/><br/>L<br/><br/>M</html>");
+        AToM.setFont(font2); 
+        contenant.add(AToM);
+        
+        JLabel MorseAToM = new JLabel();
+        MorseAToM.setBounds((int)(width*0.09),(int)(height*0.02), (int)(width*0.055), (int)(height*0.9));
+        MorseAToM.setText("<html>.-<br/><br/>-...<br/><br/>-.-.<br/><br/>-..<br/><br/>.<br/><br/>..-.<br/><br/>--.<br/><br/>....<br/><br/>..<br/><br/>.---<br/><br/>-.-<br/><br/>.-..<br/><br/>--</html>");
+        MorseAToM.setFont(font2);
+        contenant.add(MorseAToM);
+        
+        JLabel NToZ = new JLabel();
+        NToZ.setBounds((int)(width*0.15),(int)(height*0.02), (int)(width*0.055), (int)(height*0.9));
+        NToZ.setText("<html>N<br/><br/>O<br/><br/>P<br/><br/>Q<br/><br/>R<br/><br/>S<br/><br/>T<br/><br/>U<br/><br/>V<br/><br/>W<br/><br/>X<br/><br/>Y<br/><br/>Z</html>");
+        NToZ.setFont(font2);
+        contenant.add(NToZ);
+        
+        JLabel MorseNToZ = new JLabel();
+        MorseNToZ.setBounds((int)(width*0.18),(int)(height*0.02), (int)(width*0.055), (int)(height*0.9));
+        MorseNToZ.setText("<html>-.<br/><br/>---<br/><br/>.--.<br/><br/>--.-<br/><br/>.-.<br/><br/>...<br/><br/>-<br/><br/>..-<br/><br/>...-<br/><br/>.--<br/><br/>-..-<br/><br/>-.--<br/><br/><--..</html>");
+        MorseNToZ.setFont(font2); 
+        contenant.add(MorseNToZ);
+        
+        JLabel chiffre = new JLabel();
+        chiffre.setBounds((int)(width*0.83),(int)(height*0.02), (int)(width*0.055), (int)(height*0.8));
+        chiffre.setText("<html>0<br/><br/>1<br/><br/>2<br/><br/>3<br/><br/>4<br/><br/>5<br/><br/>6<br/><br/>7<br/><br/>8<br/><br/>9</html>");
+        chiffre.setFont(font2);
+        contenant.add(chiffre);
+        
+        JLabel MorseChiffre = new JLabel();
+        MorseChiffre.setBounds((int)(width*0.86),(int)(height*0.02), (int)(width*0.055), (int)(height*0.8));
+        MorseChiffre.setText("<html>-----<br/><br/>.----.<br/><br/>..---<br/><br/>...--<br/><br/>....-<br/><br/>.....<br/><br/>-....<br/><br/>--...<br/><br/>---..<br/><br/>----.</html>");
+        MorseChiffre.setFont(font2); 
+        contenant.add(MorseChiffre);
 }
 
     
