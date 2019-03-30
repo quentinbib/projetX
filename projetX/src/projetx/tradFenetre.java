@@ -37,8 +37,32 @@ public class tradFenetre extends JFrame implements ActionListener
     
     static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..","-----",".----","..---","...--","....-",".....","-....","--...","---..","----.",""};
     static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"," "};
-
+    
+    public static void sonCourt () throws UnsupportedAudioFileException, IOException, LineUnavailableException
+       {
+           String soundName = "src/sonVolume/sonCourt.wav";    
+           AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+           Clip clip = AudioSystem.getClip();
+           clip.open(audioInputStream);
+           clip.start();
+       }
     public static void sonLong () throws UnsupportedAudioFileException, IOException, LineUnavailableException
+       {
+           String soundName = "src/sonVolume/sonLong.wav";    
+           AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+           Clip clip = AudioSystem.getClip();
+           clip.open(audioInputStream);
+           clip.start();
+       }
+    public static void sonSilence () throws UnsupportedAudioFileException, IOException, LineUnavailableException
+    {
+        String soundName = "src/sonVolume/silenceee.wav";    
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+        clip.start();
+    }
+    public static void sonLongKim () throws UnsupportedAudioFileException, IOException, LineUnavailableException
     {
         String soundName = "src/sonVolume/longKim.wav";    
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
@@ -47,7 +71,7 @@ public class tradFenetre extends JFrame implements ActionListener
         clip.start();
     }
     
-    public static void sonCourt () throws UnsupportedAudioFileException, IOException, LineUnavailableException
+    public static void sonCourtKim () throws UnsupportedAudioFileException, IOException, LineUnavailableException
     {
         String soundName = "src/sonVolume/courtKim.wav";    
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
@@ -67,11 +91,11 @@ public class tradFenetre extends JFrame implements ActionListener
             accueilFen fenetre = new accueilFen();
             setVisible(false);
         }
-       String motEnMorse = "";
+       
        if(ev.getSource() == boutonValider)
         {
             String nouvotexte = francais.getText();
-            
+            String motEnMorse = "";
             int lettre = 0; 
             String stringvalueof; 
             for (int i = 0; i < nouvotexte.length(); i++) 
@@ -93,18 +117,10 @@ public class tradFenetre extends JFrame implements ActionListener
        
        if(ev.getSource() == volume)
         {
-            //motEnMorse.toCharArray();
+            String texteCase = morse2.getText();
             String trait = "-";
             String point = ".";
-            /*motEnMorse.split("");
-            for (int i = 0; i < motEnMorse.length(); i++) {
-                {
-                    System.out.println(motEnMorse);
-                }
-            }*/
-           // char[]myCharArray = motEnMorse.toCharArray();
-            //String s;
-            String[] arrayDeString = motEnMorse.split("");
+            String[] arrayDeString = texteCase.split("");
             for (int i = 0; i < arrayDeString.length; i++) 
             {
                 
@@ -114,56 +130,62 @@ public class tradFenetre extends JFrame implements ActionListener
                // if (motEnMorse.equalsIgnoreCase(trait))
                 if (arrayDeString[i].equalsIgnoreCase(trait))
                 {
+                    try 
+                    {
+                        sonLong();
+                    } catch (UnsupportedAudioFileException ex) 
+                    {
+                        Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (LineUnavailableException ex) {
+                        Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try 
+                    {
+			Thread.sleep(500);
+		    } catch (InterruptedException e) 
+                    {
+			e.printStackTrace();
+		    }
                     System.out.println("trait");
                 }
-                //else if (motEnMorse.equalsIgnoreCase(point))
                 else if (arrayDeString[i].equalsIgnoreCase(point))
                 {
+                    try 
+                    {
+                        sonCourt();
+                    } catch (UnsupportedAudioFileException ex) 
+                    {
+                        Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (LineUnavailableException ex) {
+                        Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try 
+                    {
+			Thread.sleep(250);
+		    } catch (InterruptedException e) 
+                    {
+			e.printStackTrace();
+		    }
+                    
                     System.out.println("point");
+                }
+                else
+                {
+                   try 
+                    {
+			Thread.sleep(700);
+		    } catch (InterruptedException e) 
+                    {
+			e.printStackTrace();
+		    } 
                 }
                         
                 
             }
-            /*
-            System.out.println("");
-            String trait = "-";
-            String point = ".";
-            char[] chars = motEnMorse.toCharArray();
-            for (int i = 0; i < chars.length; i++) 
-            {
-                if (char[i].equalsIgnoreCase(trait))
-                {
-                
-                }
-            }
-            motEnMorse.S
-            int lettre = 0; 
-            String stringvalueof; 
-            for (int i = 0; i < motEnMorse.length(); i++) 
-            {
-                stringvalueof = String.valueOf(motEnMorse.charAt(lettre));
-                for (int loop=0; loop < motEnMorse.length; loop++)
-                {  
-                    if (motEnMorse[loop].equalsIgnoreCase(stringvalueof))
-                    {
-                        motEnMorse = (motEnMorse + ((" ") + (morse[loop])));
-                    } 
-                }
-                lettre = lettre + 1;
-            }
-            
-            
-            
-           try {
-               sonLong();
-           } catch (UnsupportedAudioFileException ex) {
-               Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (IOException ex) {
-               Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (LineUnavailableException ex) {
-               Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
-           }
-        }*/
       
     }
     }
