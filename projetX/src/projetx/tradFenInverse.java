@@ -1,5 +1,6 @@
 package projetx;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -31,8 +32,8 @@ public class tradFenInverse extends JFrame implements ActionListener
     private JTextField morse2;
     private JTextField francais;
 
-    static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..","-----",".----","..---","...--","....-",".....","-....","--...","---..","----."," "};
-    static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"," "};
+    static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..","-----",".----","..---","...--","....-",".....","-....","--...","---..","----."," ","  "};
+    static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"," ","  "};
     
     public void actionPerformed(ActionEvent ev)
     {
@@ -59,27 +60,38 @@ public class tradFenInverse extends JFrame implements ActionListener
         {
             String nouvotexte = morse2.getText();
             String motEnMorse = "";
-            int lettre = 0;
-            String stringvalueof; 
+            int lettre = 0; 
+            int compteur = 0;
             String[] morsec = nouvotexte.split(" ");
             for (int i = 0; i < morsec.length; i++) 
             {
-                //  stringvalueof = String.valueOf(nouvotexte.charAt(lettre));
-                
                 for (int loop=0; loop < morse.length; loop++)
                 {  
                     if (morse[loop].equalsIgnoreCase(morsec[i]))
                     {
                         motEnMorse = (motEnMorse + ((normal[loop])));
+                        compteur = compteur+1;
                     } 
                     if (morse[loop] == " ")
                     {
                         motEnMorse = (motEnMorse + " ");
+                       // compteur = compteur+1;
                     }
                 }
                 lettre = lettre + 1;
             }
-            francais.setText(motEnMorse);
+            if (compteur == lettre)
+            {
+                francais.setText(motEnMorse);
+                francais.setForeground(Color.black);
+            }
+            else
+            {
+                Font font1 = new Font("", Font.PLAIN, 14);
+                francais.setText("Entrez soit: un trait, un point, un espace");
+                francais.setForeground(Color.red);
+                francais.setFont(font1);
+            }
         }
     }
     

@@ -1,5 +1,6 @@
 package projetx;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -72,6 +73,14 @@ public class tradFenetre extends JFrame implements ActionListener
         clip.open(audioInputStream);
         clip.start();
     }
+    public static void erreur () throws UnsupportedAudioFileException, IOException, LineUnavailableException
+    {
+        String soundName = "src/sonVolume/entrer.wav";    
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+        clip.start();
+    }
     public void actionPerformed(ActionEvent ev)
     {
        if(ev.getSource() == fleche)
@@ -90,6 +99,7 @@ public class tradFenetre extends JFrame implements ActionListener
             String nouvotexte = francais.getText();
             String motEnMorse = "";
             int lettre = 0; 
+            int compteur = 0;
             String stringvalueof; 
             for (int i = 0; i < nouvotexte.length(); i++) 
             {
@@ -99,20 +109,33 @@ public class tradFenetre extends JFrame implements ActionListener
                     if (normal[loop].equalsIgnoreCase(stringvalueof))
                     {
                         motEnMorse = (motEnMorse + ((" ") + (morse[loop])));
-                    } 
+                        compteur = compteur+1;
+                    }
                 }
                 lettre = lettre + 1;
             }
-            Font font1 = new Font("", Font.PLAIN, 25);
-            morse2.setText(motEnMorse);
-            morse2.setFont(font1);
+            if (compteur == lettre)
+            {
+                Font font2 = new Font("", Font.PLAIN, 25);
+                morse2.setText(motEnMorse);
+                morse2.setForeground(Color.black);
+                morse2.setFont(font2);
+            }
+            else
+            {
+                Font font1 = new Font("", Font.PLAIN, 14);
+                morse2.setText("entrez un des charactères qui figurent sur les bords de l'écran");
+                morse2.setForeground(Color.red);
+                morse2.setFont(font1);
+            } 
         } 
-       
        if(ev.getSource() == volume)
         {
             String texteCase = morse2.getText();
             String trait = "-";
             String point = ".";
+            String espace = " ";
+            String erreur = "entrez un des charactères qui figurent sur les bords de l'écran";
             String[] arrayDeString = texteCase.split("");
             for (int i = 0; i < arrayDeString.length; i++) 
             {
@@ -120,7 +143,7 @@ public class tradFenetre extends JFrame implements ActionListener
                 {
                     try 
                     {
-                        sonLongKim();
+                        sonLong();
                     } catch (UnsupportedAudioFileException ex) 
                     {
                         Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
@@ -141,7 +164,7 @@ public class tradFenetre extends JFrame implements ActionListener
                 {
                     try 
                     {
-                        sonCourtKim();
+                        sonCourt();
                     } catch (UnsupportedAudioFileException ex) 
                     {
                         Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
@@ -158,7 +181,7 @@ public class tradFenetre extends JFrame implements ActionListener
 			e.printStackTrace();
 		    }
                 }
-                else
+                else if (arrayDeString[i].equalsIgnoreCase(espace))
                 {
                    try 
                     {
@@ -167,9 +190,21 @@ public class tradFenetre extends JFrame implements ActionListener
                     {
 			e.printStackTrace();
 		    } 
+                }                
+            }
+            if (texteCase.equalsIgnoreCase(erreur))
+            {
+                try 
+                {
+                    erreur();
+                } catch (UnsupportedAudioFileException ex) 
+                {
+                    Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                        
-                
             }
       
     }
