@@ -21,6 +21,7 @@ import javax.swing.JTextField;
  */
 public class noobFenetre extends JFrame implements ActionListener
 {
+    private JTextField morse2;
      public void actionPerformed(ActionEvent ev)
      {
          
@@ -54,9 +55,9 @@ public noobFenetre()
         add(morse2);
 }
 
-    @Override
-    public void actionPerformed(ActionEvent ae) 
+    /*@Override
+   /* public void actionPerformed(ActionEvent ae) 
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
 }

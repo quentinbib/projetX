@@ -33,7 +33,8 @@ public class entrainementFenetre extends JFrame implements ActionListener
     {
     if(ev.getSource() == noob)
     {
-        
+        noobFenetre fenetre = new noobFenetre();
+        setVisible(false);
     }
     if(ev.getSource() == standard)
     {
