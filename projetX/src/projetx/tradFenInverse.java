@@ -32,20 +32,25 @@ public class tradFenInverse extends JFrame implements ActionListener
     private JTextField morse2;
     private JTextField francais;
 
-    static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..","-----",".----","..---","...--","....-",".....","-....","--...","---..","----."," ","  "};
-    static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"," ","  "};
+    static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..","-----",".----","..---","...--","....-",".....","-....","--...","---..","----.",""};
+    static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"," "};
     
     public void actionPerformed(ActionEvent ev)
     {
        if(ev.getSource() == fleche)
         {
-           try {
+           try 
+           {
                tradFenetre fenetre = new tradFenetre();
-           } catch (UnsupportedAudioFileException ex) {
+           } catch (UnsupportedAudioFileException ex) 
+           {
                Logger.getLogger(tradFenInverse.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (IOException ex) {
+           } catch (IOException ex) 
+           {
                Logger.getLogger(tradFenInverse.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (LineUnavailableException ex) {
+           } catch (LineUnavailableException ex) 
+           
+           {
                Logger.getLogger(tradFenInverse.class.getName()).log(Level.SEVERE, null, ex);
            }
             setVisible(false);
@@ -71,19 +76,15 @@ public class tradFenInverse extends JFrame implements ActionListener
                     {
                         motEnMorse = (motEnMorse + ((normal[loop])));
                         compteur = compteur+1;
-                    } 
-                    if (morse[loop] == " ")
-                    {
-                        motEnMorse = (motEnMorse + " ");
-                       // compteur = compteur+1;
                     }
                 }
                 lettre = lettre + 1;
             }
+            francais.setText(motEnMorse);
+                francais.setForeground(Color.black);
             if (compteur == lettre)
             {
-                francais.setText(motEnMorse);
-                francais.setForeground(Color.black);
+                
             }
             else
             {
