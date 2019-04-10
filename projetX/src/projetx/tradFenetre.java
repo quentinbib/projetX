@@ -124,19 +124,21 @@ public class tradFenetre extends JFrame implements ActionListener
             else
             {
                 Font font1 = new Font("", Font.PLAIN, 14);
-                morse2.setText("entrez un des charactères qui figurent sur les bords de l'écran");
+                morse2.setText("entrez_un_des_charactères_qui_figurent_sur_les_bords_de_l'écran");
                 morse2.setForeground(Color.red);
                 morse2.setFont(font1);
             } 
         } 
        if(ev.getSource() == volume)
         {
+            int count =0;
             String texteCase = morse2.getText();
             String trait = "-";
             String point = ".";
             String espace = " ";
-            String erreur = "entrez un des charactères qui figurent sur les bords de l'écran";
+            String erreur = "entrez_un_des_charactères_qui_figurent_sur_les_bords_de_l'écran";
             String[] arrayDeString = texteCase.split("");
+            
             for (int i = 0; i < arrayDeString.length; i++) 
             {
                 if (arrayDeString[i].equalsIgnoreCase(trait))
@@ -190,9 +192,13 @@ public class tradFenetre extends JFrame implements ActionListener
                     {
 			e.printStackTrace();
 		    } 
-                }                
+                }
+                else if (texteCase.equalsIgnoreCase(erreur))
+                {
+                    count = count+1;
+                }              
             }
-            if (texteCase.equalsIgnoreCase(erreur))
+            if (count !=0)
             {
                 try 
                 {
