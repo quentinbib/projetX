@@ -17,10 +17,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import static projetx.tradFenetre.normal;
 /**
  *
  * @author Hugo
@@ -29,17 +32,20 @@ import javax.swing.JTextField;
 public class noobFenetre extends JFrame implements ActionListener
 {
     public static BufferedReader fR;
+    // on l'utilise ici pour lire la liste de mots du fichier texte
+    //la fonction suivante permet de lire ligne par ligne le fichier texte grace au BufferedReader
     public static String lecture() throws IOException
     {
         String ligneFichier = fR.readLine();
         return ligneFichier;
     }
+    private JButton retour;
     private JButton next;
     private JButton valider;
-    private JTextField morse2;
-    private JTextField morse3;
+    private JTextField sortie;
+    private JTextField entree;
     static String ligne ="";
-    static String alphabetmorse[] ={ ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","..."," -","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----",""};
+    static String morse[] ={ ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","..."," -","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----",""};
     static String normal[] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9","0"," "};
      public void actionPerformed(ActionEvent ev)
      {
@@ -53,18 +59,40 @@ public class noobFenetre extends JFrame implements ActionListener
             }
         }
         } 
+        if(ev.getSource() == next)
+        {
+            try 
+            {
+                noobFenetre fenetre = new noobFenetre();
+            } catch (IOException ex) 
+            {
+                Logger.getLogger(noobFenetre.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            setVisible(false);
+        }
+        if(ev.getSource() == retour)
+        {
+            entrainementFenetre fenetre = new entrainementFenetre();
+            setVisible(false);
+        }
      }
 public noobFenetre() throws FileNotFoundException, IOException
 {
-    fR = new BufferedReader(new FileReader(new File("src/levels/niveau noob.txt")));
+    //On selectionne le fichier qu'on va utiliser
+    fR = new BufferedReader(new FileReader(new File("src/levels/niveaunoob.txt")));
     Dimension ecran = Toolkit.getDefaultToolkit().getScreenSize();
+    //La ligne suivante permet de choisir une ligne au hasard dansle fichier
     int random = (int)( Math.random()*36 + 1);
     for (int i = 0; i < random; i++)
      {
          ligne = lecture();
-         
+         //ligne = String.valueOf(nouvotexte.charAt(lettre));
      }
-        
+        String nouvotexte = entree.getText();
+        String motEnMorse = "";
+        String stringvalueof;
+        int lettre = 0; 
+        int compteur = 0; 
         int width = (int) ecran.getWidth();
         int height = (int) ecran.getHeight();
         
@@ -84,27 +112,41 @@ public noobFenetre() throws FileNotFoundException, IOException
         
         JLabel mottrad = new JLabel();
         mottrad.setFont(new Font("Berlin Sans FB", Font.PLAIN, 28));
-        mottrad.setBounds((int)(width*0.50),(int)(height*0.25), (int)(width*0.58),(int)(height*0.06));
+        mottrad.setBounds((int)(width*0.40),(int)(height*0.20), (int)(width*0.60),(int)(height*0.06));
         contenant.add(mottrad);
-        mottrad.setText("Le caractère " + ligne);
+        mottrad.setText("Traduire le caractère " + ligne);
         
-        morse2 = new JTextField();
-        morse2.setBounds((int)(width/2-width*0.40/2),(int)(height*0.40), (int)(width*0.40), (int)(height*0.06));
-        morse2.setHorizontalAlignment(JTextField.CENTER);
-        Font font1 = new Font("", Font.PLAIN, 25);
-        morse2.setFont(font1);
-        add(morse2);
+        sortie = new JTextField();
+        sortie.setBounds((int)(width/2-width*0.40/2),(int)(height*0.40), (int)(width*0.40), (int)(height*0.06));
+        sortie.setHorizontalAlignment(JTextField.CENTER);
+        Font font1 = new Font("morse 2", Font.PLAIN, 25);
+        sortie.setFont(font1);
+        add(sortie);
         
-        morse3 = new JTextField();
-        morse3.setBounds((int)(width/2-width*0.40/2),(int)(height*0.28), (int)(width*0.40), (int)(height*0.06));
-        morse3.setHorizontalAlignment(JTextField.CENTER);
-        Font font2 = new Font("", Font.PLAIN, 25);
-        morse3.setFont(font1);
-        add(morse3);
+        entree = new JTextField();
+        entree.setBounds((int)(width/2-width*0.40/2),(int)(height*0.28), (int)(width*0.40), (int)(height*0.06));
+        entree.setHorizontalAlignment(JTextField.CENTER);
+        Font font2 = new Font("morse 3", Font.PLAIN, 25);
+        entree.setFont(font1);
+        add(entree);
         
         next = new JButton ("Suivant");
         next.setBounds((int)(width/2-width*0.11/2),(int)(height*0.62), (int)(width*0.11),(int)(height*0.06));
         contenant.add(next);
         next.addActionListener(this);
+        
+        retour = new JButton ("Retour");
+        retour.setBounds((int)(width*0.81),(int)(height*0.82), (int)(width*0.11),(int)(height*0.06));
+        contenant.add(retour);
+        retour.addActionListener(this);
+        stringvalueof = String.valueOf(nouvotexte.charAt(lettre));
+                for (int loop=0; loop < normal.length; loop++)
+                {  
+                    if (normal[loop].equalsIgnoreCase(stringvalueof))
+                    {
+                        motEnMorse = (motEnMorse + ((" ") + (morse[loop])));
+                    }
+                }
+
 }
 }
