@@ -67,7 +67,7 @@ public class noobFenetre extends JFrame implements ActionListener
             {
                 Logger.getLogger(noobFenetre.class.getName()).log(Level.SEVERE, null, ex);
             }
-            setVisible(false);
+            setVisible(true);
         }
         if(ev.getSource() == retour)
         {
