@@ -19,6 +19,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author BERNARD
@@ -33,16 +36,30 @@ public class entrainementFenetre extends JFrame implements ActionListener
     {
     if(ev.getSource() == noob)
     {
-        noobFenetre fenetre = new noobFenetre();
+        try {
+            noobFenetre fenetre = new noobFenetre();
+        } catch (IOException ex) {
+            Logger.getLogger(entrainementFenetre.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setVisible(false);
     }
     if(ev.getSource() == standard)
     {
-        
+        try {
+            standardFenetre fenetre = new standardFenetre();
+        } catch (IOException ex) {
+            Logger.getLogger(entrainementFenetre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        setVisible(false);
     }
     if(ev.getSource() == bilingue)
     {
-        
+        try {
+            bilingueFenetre fenetre = new bilingueFenetre();
+        } catch (IOException ex) {
+            Logger.getLogger(entrainementFenetre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        setVisible(false);
     }
     if(ev.getSource() == menu)   
     {

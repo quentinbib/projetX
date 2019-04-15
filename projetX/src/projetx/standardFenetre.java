@@ -23,12 +23,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
 /**
  *
  * @author Hugo
  */
-
-public class noobFenetre extends JFrame implements ActionListener
+public class standardFenetre extends JFrame implements ActionListener
 {
     public static BufferedReader fR;
     // on l'utilise ici pour lire la liste de mots du fichier texte
@@ -46,7 +46,7 @@ public class noobFenetre extends JFrame implements ActionListener
     static String ligne ="";
     static String alphabetmorse[] ={ ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","..."," -","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----",""};
     static String normal[] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9","0"," "};
-     public void actionPerformed(ActionEvent ev)
+public void actionPerformed(ActionEvent ev)
      {
         if(ev.getSource() == valider)
         {
@@ -62,10 +62,10 @@ public class noobFenetre extends JFrame implements ActionListener
         {
             try 
             {
-                noobFenetre fenetre = new noobFenetre();
+                standardFenetre fenetre = new standardFenetre();
             } catch (IOException ex) 
             {
-                Logger.getLogger(noobFenetre.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(standardFenetre.class.getName()).log(Level.SEVERE, null, ex);
             }
             setVisible(false);
         }
@@ -75,10 +75,10 @@ public class noobFenetre extends JFrame implements ActionListener
             setVisible(false);
         }
      }
-public noobFenetre() throws FileNotFoundException, IOException
+public standardFenetre() throws FileNotFoundException, IOException
 {
     //On selectionne le fichier qu'on va utiliser
-    fR = new BufferedReader(new FileReader(new File("src/levels/niveaunoob.txt")));
+    fR = new BufferedReader(new FileReader(new File("src/levels/niveaustandard.txt")));
     Dimension ecran = Toolkit.getDefaultToolkit().getScreenSize();
     //La ligne suivante permet de choisir une ligne au hasard dansle fichier
     int random = (int)( Math.random()*36 + 1);
@@ -86,10 +86,11 @@ public noobFenetre() throws FileNotFoundException, IOException
      {
          ligne = lecture();
      }
+        
         int width = (int) ecran.getWidth();
         int height = (int) ecran.getHeight();
         
-        setTitle ("noobFenetre");
+        setTitle ("standardFenetre");
         setSize (width,height);
         setVisible (true);
         Container contenant = getContentPane();
@@ -127,3 +128,4 @@ public noobFenetre() throws FileNotFoundException, IOException
         retour.addActionListener(this);
 }
 }
+
