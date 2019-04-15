@@ -58,6 +58,7 @@ public class noobFenetre extends JFrame implements ActionListener
             }
         }
         } 
+        // Si l'utilisateur n'arrive pas à traduire un mot, il peut passer à un autre mot
         if(ev.getSource() == next)
         {
             try 
@@ -69,6 +70,7 @@ public class noobFenetre extends JFrame implements ActionListener
             }
             setVisible(false);
         }
+        //On peut toujours retourner au menu des niveaux dans les exercices
         if(ev.getSource() == retour)
         {
             entrainementFenetre fenetre = new entrainementFenetre();
@@ -112,18 +114,22 @@ public noobFenetre() throws FileNotFoundException, IOException
         morse2 = new JTextField();
         morse2.setBounds((int)(width/2-width*0.40/2),(int)(height*0.40), (int)(width*0.40), (int)(height*0.06));
         morse2.setHorizontalAlignment(JTextField.CENTER);
-        Font font1 = new Font("morse 2", Font.PLAIN, 25);
-        morse2.setFont(font1);
+        Font font1 = new Font("hgv,jvh,", Font.PLAIN, 25);
         add(morse2);
         
-        next = new JButton ("Suivant");
+        next = new JButton ("Passer");
         next.setBounds((int)(width/2-width*0.11/2),(int)(height*0.62), (int)(width*0.11),(int)(height*0.06));
         contenant.add(next);
         next.addActionListener(this);
         
         retour = new JButton ("Retour");
-        retour.setBounds((int)(width*0.81),(int)(height*0.82), (int)(width*0.11),(int)(height*0.06));
+        retour.setBounds((int)(width*0.81),(int)(height*0.82), (int)(width*0.09),(int)(height*0.04));
         contenant.add(retour);
         retour.addActionListener(this);
+        
+        valider = new JButton ("valider");
+        valider.setBounds((int)(width/2-width*0.11/2),(int)(height*0.52), (int)(width*0.11),(int)(height*0.06));
+        contenant.add(valider);
+        valider.addActionListener(this);
 }
 }

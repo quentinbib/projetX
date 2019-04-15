@@ -84,9 +84,9 @@ public class entrainementFenetre extends JFrame implements ActionListener
         
         JLabel nomSite = new JLabel();
         nomSite.setFont(new Font("Algerian", Font.PLAIN, 28));
-        nomSite.setBounds((int)(width*0.37),(int)(height*0.13), (int)(width*0.5),(int)(height*0.06));
+        nomSite.setBounds((int)(width*0.42),(int)(height*0.13), (int)(width*0.5),(int)(height*0.06));
         contenant.add(nomSite);
-        nomSite.setText("Choisissez une difficulté");
+        nomSite.setText("Choisissez une difficulté :");
         
         noob = new JButton ("noob");
         noob.setBounds((int)(width/2-width*0.11/2),(int)(height*0.22), (int)(width*0.11),(int)(height*0.06));

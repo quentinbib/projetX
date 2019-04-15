@@ -108,7 +108,7 @@ public bilingueFenetre() throws IOException
         mottrad.setFont(new Font("Berlin Sans FB", Font.PLAIN, 28));
         mottrad.setBounds((int)(width*0.40),(int)(height*0.20), (int)(width*0.60),(int)(height*0.06));
         contenant.add(mottrad);
-        mottrad.setText("Traduire le caractère " + ligne);
+        mottrad.setText("Traduire le(s) mot(s) : " + ligne);
         
         morse2 = new JTextField();
         morse2.setBounds((int)(width/2-width*0.40/2),(int)(height*0.40), (int)(width*0.40), (int)(height*0.06));
@@ -123,7 +123,7 @@ public bilingueFenetre() throws IOException
         next.addActionListener(this);
         
         retour = new JButton ("Retour");
-        retour.setBounds((int)(width*0.81),(int)(height*0.82), (int)(width*0.11),(int)(height*0.06));
+        retour.setBounds((int)(width*0.81),(int)(height*0.82), (int)(width*0.09),(int)(height*0.04));
         contenant.add(retour);
         retour.addActionListener(this);
 }
