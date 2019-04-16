@@ -5,6 +5,7 @@
  */
 package projetx;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -23,6 +24,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
 /**
  *
  * @author Hugo
@@ -44,20 +46,57 @@ public class noobFenetre extends JFrame implements ActionListener
     private JTextField morse2;
     private JTextField morse3;
     static String ligne ="";
-    static String alphabetmorse[] ={ ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","..."," -","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----",""};
+    static String morse[] ={ ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","..."," -","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----",""};
     static String normal[] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9","0"," "};
      public void actionPerformed(ActionEvent ev)
      {
         if(ev.getSource() == valider)
         {
-            for (int loop = 0; loop < 36; loop++) 
-        {
-            if (normal[loop].equalsIgnoreCase(ligne))
+            String nouvotexte = morse2.getText();
+            String motEnMorse = "";
+            int lettre = 0; 
+            int compteur = 0;
+            String stringvalueof;
+            
+            for (int i = 0; i < nouvotexte.length(); i++) 
             {
+                stringvalueof = String.valueOf(nouvotexte.charAt(lettre));
+                for (int loop=0; loop < normal.length; loop++)
+                {  
+                    if (normal[loop].equalsIgnoreCase(stringvalueof))
+                    {
+                        motEnMorse = (motEnMorse + ((" ") + (morse[loop])));
+                        compteur = compteur+1;
+                    }
+                }
+                lettre = lettre + 1;
+            }
+           
+        if (nouvotexte.equalsIgnoreCase(motEnMorse))
+            {
+                try 
+            {
+                noobFenetre fenetre = new noobFenetre();
+            } catch (IOException ex) 
+            {
+                Logger.getLogger(noobFenetre.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            setVisible(false);
               
             }
+        else
+        {
+            Font font1 = new Font("", Font.PLAIN, 14);
+            morse2.setText("reesayer");
+            morse2.setForeground(Color.red);
+            morse2.setFont(font1);
         }
-        } 
+        
+            
+            
+         
+        
+         
         // Si l'utilisateur n'arrive pas à traduire un mot, il peut passer à un autre mot
         if(ev.getSource() == next)
         {
@@ -76,6 +115,7 @@ public class noobFenetre extends JFrame implements ActionListener
             entrainementFenetre fenetre = new entrainementFenetre();
             setVisible(false);
         }
+     }
      }
 public noobFenetre() throws FileNotFoundException, IOException
 {
@@ -114,7 +154,8 @@ public noobFenetre() throws FileNotFoundException, IOException
         morse2 = new JTextField();
         morse2.setBounds((int)(width/2-width*0.40/2),(int)(height*0.40), (int)(width*0.40), (int)(height*0.06));
         morse2.setHorizontalAlignment(JTextField.CENTER);
-        Font font1 = new Font("hgv,jvh,", Font.PLAIN, 25);
+        Font font1 = new Font("", Font.PLAIN, 25);
+        morse2.setForeground(Color.black);
         add(morse2);
         
         next = new JButton ("Passer");
@@ -133,3 +174,4 @@ public noobFenetre() throws FileNotFoundException, IOException
         valider.addActionListener(this);
 }
 }
+

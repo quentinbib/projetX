@@ -161,24 +161,7 @@ public class tradFenInverse extends JFrame implements ActionListener
         menu.setBounds((int)(width*0.85),(int)(height*0.80),(int)(width*0.09),(int)(height*0.04));
         contenant.add(menu);
         menu.addActionListener(this);
-        
-        /*volume = new JButton();
-        File imageCheck2 = new File("src\\images\\volume.jpg");
-        try
-        {
-          Image img = ImageIO.read(imageCheck2);
-          Image newImg = img.getScaledInstance((int)(width*0.04), (int)(height*0.047), img.SCALE_DEFAULT);
-          volume.setIcon(new ImageIcon(newImg));
-        } 
-        catch (Exception ex) 
-        {
-          System.out.println(ex);
-        }
-        setResizable(true);
-        volume.setBounds((int)(width/2-width*0.034/2),(int)(height*0.82), (int)(width*0.034), (int)(height*0.04));
-        contenant.add(volume);
-        volume.addActionListener(this);*/
-        
+
         Font font2 = new Font("", Font.PLAIN, 18);
         JLabel AToM = new JLabel();
         AToM.setBounds((int)(width*0.06),(int)(height*0.02), (int)(width*0.055), (int)(height*0.9));
