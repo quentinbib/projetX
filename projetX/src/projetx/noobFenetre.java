@@ -90,6 +90,7 @@ public class noobFenetre extends JFrame implements ActionListener
             morse2.setForeground(Color.red);
             morse2.setFont(font1);
         }
+        }
         if(ev.getSource() == retour)
         {
             entrainementFenetre fenetre = new entrainementFenetre();
@@ -114,7 +115,7 @@ public class noobFenetre extends JFrame implements ActionListener
             setVisible(false);
         }
      }
-     }
+     
 public noobFenetre() throws FileNotFoundException, IOException
 {
     //On selectionne le fichier qu'on va utiliser
