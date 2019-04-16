@@ -40,6 +40,7 @@ public class noobFenetre extends JFrame implements ActionListener
         String ligneFichier = fR.readLine();
         return ligneFichier;
     }
+    
     private JButton retour;
     private JButton next;
     private JButton valider;
@@ -50,12 +51,12 @@ public class noobFenetre extends JFrame implements ActionListener
     static String normal[] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9","0"," "};
      public void actionPerformed(ActionEvent ev)
      {
+         
         if(ev.getSource() == valider)
         {
-            String nouvotexte = morse2.getText();
-            String motEnMorse = "";
+            String nouvotexte = ligne;
+            String motEnMorse = "" ;
             int lettre = 0; 
-            int compteur = 0;
             String stringvalueof;
             
             for (int i = 0; i < nouvotexte.length(); i++) 
@@ -65,38 +66,35 @@ public class noobFenetre extends JFrame implements ActionListener
                 {  
                     if (normal[loop].equalsIgnoreCase(stringvalueof))
                     {
-                        motEnMorse = (motEnMorse + ((" ") + (morse[loop])));
-                        compteur = compteur+1;
+                        motEnMorse = (motEnMorse + (morse[loop])); 
                     }
                 }
-                lettre = lettre + 1;
+                lettre = lettre + 1;  
             }
-           
-        if (nouvotexte.equalsIgnoreCase(motEnMorse))
+        if (morse2.getText().equalsIgnoreCase(motEnMorse))
+        {
+            try 
             {
-                try 
-            {
-                noobFenetre fenetre = new noobFenetre();
+               noobFenetre fenetre = new noobFenetre();
             } catch (IOException ex) 
             {
-                Logger.getLogger(noobFenetre.class.getName()).log(Level.SEVERE, null, ex);
+               Logger.getLogger(noobFenetre.class.getName()).log(Level.SEVERE, null, ex);
             }
             setVisible(false);
-              
-            }
+        }
         else
         {
+            System.out.println(motEnMorse);
             Font font1 = new Font("", Font.PLAIN, 14);
             morse2.setText("reesayer");
             morse2.setForeground(Color.red);
             morse2.setFont(font1);
         }
-        
-            
-            
-         
-        
-         
+        if(ev.getSource() == retour)
+        {
+            entrainementFenetre fenetre = new entrainementFenetre();
+            setVisible(false);
+        }
         // Si l'utilisateur n'arrive pas à traduire un mot, il peut passer à un autre mot
         if(ev.getSource() == next)
         {
