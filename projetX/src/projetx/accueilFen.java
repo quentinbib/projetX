@@ -23,16 +23,20 @@ import javax.swing.JLabel;
 
 public class accueilFen extends JFrame implements ActionListener
 {
-     
+    // On crée les boutons en variable globale 
     private JButton boutonTrad;
     private JButton boutonEntrainement;
+    
 
-   
+   //cette partie permet d'affecter une action à un bouton
     public void actionPerformed(ActionEvent ev)
     {
+        // si on appuie sur le bouton Trad, on ouvre une nouvelle fentêtre
        if(ev.getSource() == boutonTrad)
         {
+            // les try/catch permettent de prévenir des erreurs liées aux lectures de fichiers ou autre
            try {
+               // la ligne suivane permet d'ouvrir une nouvelle fenêtre
                tradFenetre fenetre = new tradFenetre();
            } catch (UnsupportedAudioFileException ex) {
                Logger.getLogger(accueilFen.class.getName()).log(Level.SEVERE, null, ex);
@@ -41,6 +45,8 @@ public class accueilFen extends JFrame implements ActionListener
            } catch (LineUnavailableException ex) {
                Logger.getLogger(accueilFen.class.getName()).log(Level.SEVERE, null, ex);
            }
+           //cette ligne permet de rentre invisible la fenetre sur laquelle on était précédemment
+           //de cette manière, il n'y a qu'une seulle fenêtre ouverte à la fois
             setVisible(false);
         }
        
@@ -49,27 +55,35 @@ public class accueilFen extends JFrame implements ActionListener
             entrainementFenetre fenetre = new entrainementFenetre();
             setVisible(false);
         }                
-        
     }
     public accueilFen()
     {
+        // On prend les mesures de l'écran...
         Dimension ecran = Toolkit.getDefaultToolkit().getScreenSize();
-        
+        //... et on les insère dans un int
         int width = (int) ecran.getWidth();
         int height = (int) ecran.getHeight();
         
+        //on définit le nom de la fenetre
         setTitle ("fenetrePrinc");
+        //on définit les dimensions de la fentêtre
         setSize (width,height);
+        //la fenêtre devient visible
         setVisible (true);
         Container contenant = getContentPane();
         getContentPane().setLayout(new FlowLayout());
         contenant.setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+        // Un Jlabel permet d'afficher un texte
         JLabel nomSite = new JLabel();
+        // on déterine la police "algerian"
         nomSite.setFont(new Font("Algerian", Font.PLAIN, 28));
+        // on définit les dimensions de la zone de texte (position largeur/hauteur et taille largeur/hauteur)
         nomSite.setBounds((int)(width*0.39),(int)(height*0.13), (int)(width*0.15),(int)(height*0.06));
+        //on ajoute le jlabel sur la page
         contenant.add(nomSite);
+        //on insère le texte dans le JLabel
         nomSite.setText("El Traductor");
         
         boutonTrad = new JButton ("traducteur");

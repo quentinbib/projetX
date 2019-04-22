@@ -46,7 +46,6 @@ public class noobFenetre extends JFrame implements ActionListener
     private JButton next;
     private JButton valider;
     private JTextField morse2;
-    private JTextField morse3;
     static String ligne ="";
     static String morse[] ={ ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","..."," -","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----",""};
     static String normal[] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9","0"," "};
@@ -72,6 +71,7 @@ public class noobFenetre extends JFrame implements ActionListener
                 }
                 lettre = lettre + 1;  
             }
+            
         if (morse2.getText().equalsIgnoreCase(motEnMorse))
         {
             count = count + 1;

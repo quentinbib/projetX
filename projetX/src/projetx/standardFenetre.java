@@ -5,6 +5,7 @@
  */
 package projetx;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -38,28 +39,75 @@ public class standardFenetre extends JFrame implements ActionListener
         String ligneFichier = fR.readLine();
         return ligneFichier;
     }
+    Font font2 = new Font("", Font.PLAIN, 18);
+    Font font1 = new Font("", Font.PLAIN, 25);
     private JButton retour;
     private JButton next;
-    private JButton valider;
+    private final JButton valider;
     private JTextField morse2;
-    private JTextField morse3;
+    public static int count = 0;
     static String ligne ="";
-    static String alphabetmorse[] ={ ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","..."," -","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----",""};
+    static String morse[] ={ ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","..."," -","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----",""};
     static String normal[] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9","0"," "};
 public void actionPerformed(ActionEvent ev)
      {
         if(ev.getSource() == valider)
         {
-            for (int loop = 0; loop < 36; loop++) 
-        {
-            if (normal[loop].equalsIgnoreCase(ligne))
+            String nouvotexte = ligne;
+            String motEnMorse = "";
+            int lettre = 0; 
+            int compteur = 0;
+            String stringvalueof;
+            
+            for (int i = 0; i < nouvotexte.length(); i++) 
             {
-              
+                stringvalueof = String.valueOf(nouvotexte.charAt(lettre));
+                for (int loop=0; loop < normal.length; loop++)
+                {  
+                    if (normal[loop].equalsIgnoreCase(stringvalueof))
+                    {
+                        motEnMorse = (motEnMorse + ((" ") + (morse[loop])));
+                        compteur = compteur+1;
+                        System.out.println("mors1" + morse[loop]);
+                        System.out.println(motEnMorse);
+                        System.out.println(morse2.getText());
+                        System.out.println();
+                    }
+                }
+                lettre = lettre + 1;
             }
-        }
+            
+        if (morse2.getText().equalsIgnoreCase(motEnMorse))
+            {
+                count = count + 1;
+                try 
+            {
+                standardFenetre fenetre = new standardFenetre();
+            } catch (IOException ex) 
+            {
+                Logger.getLogger(noobFenetre.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            setVisible(false);
+            }
+        else if (morse2.getText().equalsIgnoreCase(""))
+            {
+                Font font1 = new Font("", Font.PLAIN, 14);
+                morse2.setText("reesayer");
+                morse2.setForeground(Color.black);
+                morse2.setFont(font1);
+            }
+        else
+            {
+            Font font1 = new Font("", Font.PLAIN, 14);
+            morse2.setText("reesayer");
+            morse2.setForeground(Color.black);
+            morse2.setFont(font1);
+            }
+        
         } 
         if(ev.getSource() == next)
         {
+            count = count - 1;
             try 
             {
                 standardFenetre fenetre = new standardFenetre();
@@ -126,6 +174,18 @@ public standardFenetre() throws FileNotFoundException, IOException
         retour.setBounds((int)(width*0.81),(int)(height*0.82), (int)(width*0.09),(int)(height*0.04));
         contenant.add(retour);
         retour.addActionListener(this);
-}
+        
+        valider = new JButton ("valider");
+        valider.setBounds((int)(width/2-width*0.11/2),(int)(height*0.52), (int)(width*0.11),(int)(height*0.06));
+        contenant.add(valider);
+        valider.addActionListener(this);
+        
+        System.out.println(count);
+        JLabel vousAvez = new JLabel();
+        vousAvez.setBounds((int)(width*0.42),(int)(height*0.72),(int)(width*0.6),(int)(height*0.06));
+        vousAvez.setText("Vous avez réussi " + (count) +  " niveaux.");
+        vousAvez.setFont(font2); 
+        contenant.add(vousAvez);
+    }
 }
 
