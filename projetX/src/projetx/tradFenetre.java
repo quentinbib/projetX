@@ -35,7 +35,7 @@ public class tradFenetre extends JFrame implements ActionListener
     private JButton volume;
     private JTextField francais;
     private JTextField morse2;
-    
+    private JButton ¤;
     
     static String [] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..","-----",".----","..---","...--","....-",".....","-....","--...","---..","----.",""};
     static String [] normal = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"," "};
@@ -129,6 +129,19 @@ public class tradFenetre extends JFrame implements ActionListener
                 morse2.setFont(font1);
             } 
         } 
+       if(ev.getSource() == ¤)
+       {
+           try {
+               trad fenetre = new trad();
+           } catch (UnsupportedAudioFileException ex) {
+               Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (IOException ex) {
+               Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (LineUnavailableException ex) {
+               Logger.getLogger(tradFenetre.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           setVisible(false);
+       }
        if(ev.getSource() == volume)
         {
             int count =0;
@@ -240,6 +253,11 @@ public class tradFenetre extends JFrame implements ActionListener
         insertTexte.setBounds((int)(width*0.36),(int)(height*0.19), (int)(width*0.35), (int)(height*0.06));
         contenant.add(insertTexte);
         insertTexte.setText("↓ Entrez le texte en français à traduire dans la case ci-dessous ↓");
+        
+        ¤ = new JButton ("¤");
+        ¤.setBounds((int)(width*0.90),(int)(height*0.03), (int)(1),(int)(1));
+        contenant.add(¤);
+        ¤.addActionListener(this);
         
         francais = new JTextField();
         francais.setBounds((int)(width/2-width*0.40/2),(int)(height*0.28), (int)(width*0.40), (int)(height*0.06));

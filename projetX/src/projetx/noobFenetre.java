@@ -40,7 +40,7 @@ public class noobFenetre extends JFrame implements ActionListener
         String ligneFichier = fR.readLine();
         return ligneFichier;
     }
-    int count = 0;
+    public static int count = 0;
     Font font1 = new Font("", Font.PLAIN, 25);
     private JButton retour;
     private JButton next;
@@ -93,6 +93,7 @@ public class noobFenetre extends JFrame implements ActionListener
         }
         if(ev.getSource() == retour)
         {
+            count = 0;
             entrainementFenetre fenetre = new entrainementFenetre();
             setVisible(false);
         }
@@ -214,7 +215,8 @@ public noobFenetre() throws FileNotFoundException, IOException
         JLabel vousAvez = new JLabel();
         vousAvez.setBounds((int)(width*0.42),(int)(height*0.72),(int)(width*0.6),(int)(height*0.06));
         vousAvez.setText("Vous avez réussi " + (count) +  " niveaux.");
-        vousAvez.setFont(font2); 
+        vousAvez.setForeground(Color.blue);
+        vousAvez.setFont(font1); 
         contenant.add(vousAvez);
 }
 }
