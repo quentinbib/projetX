@@ -5,6 +5,7 @@
  */
 package projetx;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -14,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -22,7 +24,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
+import static projetx.noobFenetre.count;
+import static projetx.noobFenetre.ligne;
+import static projetx.tradFenInverse.morse;
+import static projetx.tradFenetre.morse;
+import static projetx.tradFenetre.normal;
 
 /**
  *
@@ -38,28 +44,59 @@ public class bilingueFenetre extends JFrame implements ActionListener
         String ligneFichier = fR.readLine();
         return ligneFichier;
     }
+    Font font2 = new Font("", Font.PLAIN, 18);
+    Font font1 = new Font("", Font.PLAIN, 25);
     private JButton retour;
     private JButton next;
-    private JButton valider;
+    private final JButton valider;
     private JTextField morse2;
-    private JTextField morse3;
-    static String ligne ="";
-    static String alphabetmorse[] ={ ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","..."," -","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----",""};
+    public static int count = 0;
+    static String ligne ;
+    static String morse[] ={ ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","..."," -","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----",""};
     static String normal[] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9","0"," "};
 public void actionPerformed(ActionEvent ev)
      {
         if(ev.getSource() == valider)
         {
-            for (int loop = 0; loop < 36; loop++) 
-        {
-            if (normal[loop].equalsIgnoreCase(ligne))
+            String morse3 = ((" ") + morse2.getText());
+            String nouvtexte = ligne;
+            String motEn = "" ;
+            int letter = 0; 
+            String stringvalueof;
+            for (int i = 0; i < nouvtexte.length(); i++) 
             {
-              
+                stringvalueof = String.valueOf(nouvtexte.charAt(letter));
+                for (int loop=0; loop < normal.length; loop++)
+                {  
+                    if (normal[loop].equalsIgnoreCase(stringvalueof))
+                    {
+                        motEn = (motEn + ((" ") + (morse[loop]))); 
+                    }
+                }
+                letter = letter + 1;  
+            }
+            System.out.println(motEn);
+            System.out.println(morse3);
+        if (morse2.getText().equalsIgnoreCase(motEn))
+            {
+                count = count + 1;
+                try 
+            {
+                bilingueFenetre fenetre = new bilingueFenetre();
+            } catch (IOException ex) 
+            {
+                Logger.getLogger(bilingueFenetre.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            setVisible(false);
+            }
+        else
+            {
+            morse2.setText("reesayer");
             }
         }
-        } 
         if(ev.getSource() == next)
         {
+            count = count - 1;
             try 
             {
                 bilingueFenetre fenetre = new bilingueFenetre();
@@ -75,7 +112,7 @@ public void actionPerformed(ActionEvent ev)
             setVisible(false);
         }
      }
-public bilingueFenetre() throws IOException
+public bilingueFenetre() throws FileNotFoundException, IOException
 {
     //On selectionne le fichier qu'on va utiliser
     fR = new BufferedReader(new FileReader(new File("src/levels/niveaubilingue.txt")));
@@ -90,7 +127,7 @@ public bilingueFenetre() throws IOException
         int width = (int) ecran.getWidth();
         int height = (int) ecran.getHeight();
         
-        setTitle ("noobFenetre");
+        setTitle ("bilingueFenetre");
         setSize (width,height);
         setVisible (true);
         Container contenant = getContentPane();
@@ -108,7 +145,7 @@ public bilingueFenetre() throws IOException
         mottrad.setFont(new Font("Berlin Sans FB", Font.PLAIN, 28));
         mottrad.setBounds((int)(width*0.40),(int)(height*0.20), (int)(width*0.60),(int)(height*0.06));
         contenant.add(mottrad);
-        mottrad.setText("Traduire le(s) mot(s) : " + ligne);
+        mottrad.setText("Traduire le mot : " + ligne );
         
         morse2 = new JTextField();
         morse2.setBounds((int)(width/2-width*0.40/2),(int)(height*0.40), (int)(width*0.40), (int)(height*0.06));
@@ -126,5 +163,18 @@ public bilingueFenetre() throws IOException
         retour.setBounds((int)(width*0.81),(int)(height*0.82), (int)(width*0.09),(int)(height*0.04));
         contenant.add(retour);
         retour.addActionListener(this);
+        
+        valider = new JButton ("valider");
+        valider.setBounds((int)(width/2-width*0.11/2),(int)(height*0.52), (int)(width*0.11),(int)(height*0.06));
+        contenant.add(valider);
+        valider.addActionListener(this);
+        
+        System.out.println(count);
+        JLabel vousAvez = new JLabel();
+        vousAvez.setBounds((int)(width*0.42),(int)(height*0.72),(int)(width*0.6),(int)(height*0.06));
+        vousAvez.setText("Vous avez réussi " + (count) +  " niveaux.");
+        vousAvez.setFont(font2); 
+        contenant.add(vousAvez);
+    }
 }
-}
+

@@ -24,6 +24,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import static projetx.noobFenetre.count;
+import static projetx.noobFenetre.ligne;
+import static projetx.tradFenInverse.morse;
+import static projetx.tradFenetre.morse;
+import static projetx.tradFenetre.normal;
 
 /**
  *
@@ -46,38 +51,31 @@ public class standardFenetre extends JFrame implements ActionListener
     private final JButton valider;
     private JTextField morse2;
     public static int count = 0;
-    static String ligne ="";
+    static String ligne ;
     static String morse[] ={ ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","..."," -","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----",""};
     static String normal[] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9","0"," "};
 public void actionPerformed(ActionEvent ev)
      {
         if(ev.getSource() == valider)
         {
-            String nouvotexte = ligne;
-            String motEnMorse = "";
-            int lettre = 0; 
-            int compteur = 0;
+            String morse3 = ((" ") + morse2.getText());
+            String nouvtexte = ligne;
+            String motEn = "" ;
+            int letter = 0; 
             String stringvalueof;
-            
-            for (int i = 0; i < nouvotexte.length(); i++) 
+            for (int i = 0; i < nouvtexte.length(); i++) 
             {
-                stringvalueof = String.valueOf(nouvotexte.charAt(lettre));
+                stringvalueof = String.valueOf(nouvtexte.charAt(letter));
                 for (int loop=0; loop < normal.length; loop++)
                 {  
                     if (normal[loop].equalsIgnoreCase(stringvalueof))
                     {
-                        motEnMorse = (motEnMorse + ((" ") + (morse[loop])));
-                        compteur = compteur+1;
-                        System.out.println("mors1" + morse[loop]);
-                        System.out.println(motEnMorse);
-                        System.out.println(morse2.getText());
-                        System.out.println();
+                        motEn = (motEn + ((" ") + (morse[loop]))); 
                     }
                 }
-                lettre = lettre + 1;
+                letter = letter + 1;  
             }
-            
-        if (morse2.getText().equalsIgnoreCase(motEnMorse))
+        if (morse3.equalsIgnoreCase(motEn))
             {
                 count = count + 1;
                 try 
@@ -85,26 +83,15 @@ public void actionPerformed(ActionEvent ev)
                 standardFenetre fenetre = new standardFenetre();
             } catch (IOException ex) 
             {
-                Logger.getLogger(noobFenetre.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(standardFenetre.class.getName()).log(Level.SEVERE, null, ex);
             }
             setVisible(false);
             }
-        else if (morse2.getText().equalsIgnoreCase(""))
-            {
-                Font font1 = new Font("", Font.PLAIN, 14);
-                morse2.setText("reesayer");
-                morse2.setForeground(Color.black);
-                morse2.setFont(font1);
-            }
         else
             {
-            Font font1 = new Font("", Font.PLAIN, 14);
             morse2.setText("reesayer");
-            morse2.setForeground(Color.black);
-            morse2.setFont(font1);
             }
-        
-        } 
+        }
         if(ev.getSource() == next)
         {
             count = count - 1;

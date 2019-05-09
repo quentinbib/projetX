@@ -347,7 +347,7 @@ public class tradFenetre extends JFrame implements ActionListener
         
         JLabel MorseChiffre = new JLabel();
         MorseChiffre.setBounds((int)(width*0.86),(int)(height*0.02), (int)(width*0.055), (int)(height*0.8));
-        MorseChiffre.setText("<html>-----<br/><br/>.----.<br/><br/>..---<br/><br/>...--<br/><br/>....-<br/><br/>.....<br/><br/>-....<br/><br/>--...<br/><br/>---..<br/><br/>----.</html>");
+        MorseChiffre.setText("<html>-----<br/><br/>.----<br/><br/>..---<br/><br/>...--<br/><br/>....-<br/><br/>.....<br/><br/>-....<br/><br/>--...<br/><br/>---..<br/><br/>----.</html>");
         MorseChiffre.setFont(font2); 
         contenant.add(MorseChiffre);
         
