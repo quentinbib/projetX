@@ -123,8 +123,8 @@ public noobFenetre() throws FileNotFoundException, IOException
     //On selectionne le fichier qu'on va utiliser
     fR = new BufferedReader(new FileReader(new File("src/levels/niveaunoob.txt")));
     Dimension ecran = Toolkit.getDefaultToolkit().getScreenSize();
-    //La ligne suivante permet de choisir une ligne au hasard dansle fichier
-    int random = (int)( Math.random()*36 + 1);
+    //La ligne suivante permet de choisir une ligne au hasard dans le fichier
+    int random = 1 + (int)(Math.random() * ((36 - 1) + 1));
     for (int i = 0; i < random; i++)
      {
          ligne = lecture();

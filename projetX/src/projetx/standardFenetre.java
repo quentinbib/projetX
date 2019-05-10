@@ -24,11 +24,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import static projetx.noobFenetre.count;
-import static projetx.noobFenetre.ligne;
-import static projetx.tradFenInverse.morse;
-import static projetx.tradFenetre.morse;
-import static projetx.tradFenetre.normal;
 
 /**
  *

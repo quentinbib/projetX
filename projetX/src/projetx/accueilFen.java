@@ -1,4 +1,5 @@
 package projetx;
+// a chaque fois que l'on utilise un "outil" de netbeans, on doit l'importer 
 import sun.applet.Main;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -56,6 +57,7 @@ public class accueilFen extends JFrame implements ActionListener
             setVisible(false);
         }                
     }
+    // Dans la partie suivante, on configure le coté visuel du programme soit tout ce qui se situe sur la fenetre(boutons,zones de textes...)
     public accueilFen()
     {
         // On prend les mesures de l'écran...
@@ -77,7 +79,7 @@ public class accueilFen extends JFrame implements ActionListener
         
         // Un Jlabel permet d'afficher un texte
         JLabel nomSite = new JLabel();
-        // on déterine la police "algerian"
+        // on détermine la police "algerian"
         nomSite.setFont(new Font("Algerian", Font.PLAIN, 28));
         // on définit les dimensions de la zone de texte (position largeur/hauteur et taille largeur/hauteur)
         nomSite.setBounds((int)(width*0.39),(int)(height*0.13), (int)(width*0.15),(int)(height*0.06));
@@ -86,9 +88,13 @@ public class accueilFen extends JFrame implements ActionListener
         //on insère le texte dans le JLabel
         nomSite.setText("El Traductor");
         
+        // Un JButton permet, si l'on clique dessus, d'effectuer une action. Ici on configure d'abord le texte sur le bouton,
         boutonTrad = new JButton ("traducteur");
+        // ensuite sa position et ses dimensions (de même que le JTextField),
         boutonTrad.setBounds((int)(width*1/3-width*0.11),(int)(height*0.52), (int)(width*0.11),(int)(height*0.06));
+        // on l'ajoute sur la page,
         contenant.add(boutonTrad);
+        // puis on le rend actif (s'actionne quand on clique dessus)
         boutonTrad.addActionListener(this);
 
         boutonEntrainement = new JButton ("entrainement");
@@ -96,7 +102,9 @@ public class accueilFen extends JFrame implements ActionListener
         contenant.add(boutonEntrainement);
         boutonEntrainement.addActionListener(this);
 
+        // Ici, on a également un bouton mais avec une image dessus
         JButton operator = new JButton();
+        // On cherche alors la source du fichier pour l'afficher sur le bonton
         File imageCheck = new File("src\\images\\telegraphOperator.jpg");
         try
         {
@@ -108,6 +116,7 @@ public class accueilFen extends JFrame implements ActionListener
         {
           System.out.println(ex);
         }
+        // les autres démarches sont ensuite les mêmes
         setResizable(true);
         operator.setBounds((int)(width*0.6),(int)(height*0.03), (int)(width*0.4), (int)(height*0.35));
         contenant.add(operator);
