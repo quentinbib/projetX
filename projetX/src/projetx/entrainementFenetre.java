@@ -45,6 +45,7 @@ public class entrainementFenetre extends JFrame implements ActionListener
     }
     if(ev.getSource() == standard)
     {
+        //ici, le try/catch  est utilisé car on a un bufferedreader dans la page suivante
         try {
             standardFenetre fenetre = new standardFenetre();
         } catch (IOException ex) {
@@ -69,6 +70,7 @@ public class entrainementFenetre extends JFrame implements ActionListener
     }
     public entrainementFenetre()
     {
+    //Sur chaque page, on configure les boutons et les zones de texte
     Dimension ecran = Toolkit.getDefaultToolkit().getScreenSize();
         
         int width = (int) ecran.getWidth();
@@ -84,7 +86,8 @@ public class entrainementFenetre extends JFrame implements ActionListener
         
         JLabel nomSite = new JLabel();
         nomSite.setFont(new Font("Algerian", Font.PLAIN, 28));
-        nomSite.setBounds((int)(width*0.42),(int)(height*0.13), (int)(width*0.5),(int)(height*0.06));
+        // Pour que le texte sooit relativement centré sur n'importe quel écran on ne met pas 
+        nomSite.setBounds((int)(width/2.4),(int)(height*0.13), (int)(width*0.5),(int)(height*0.06));
         contenant.add(nomSite);
         nomSite.setText("Choisissez une difficulté :");
         

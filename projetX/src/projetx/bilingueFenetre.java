@@ -112,13 +112,13 @@ public bilingueFenetre() throws FileNotFoundException, IOException
     //On selectionne le fichier qu'on va utiliser
     fR = new BufferedReader(new FileReader(new File("src/levels/niveaubilingue.txt")));
     Dimension ecran = Toolkit.getDefaultToolkit().getScreenSize();
-    //La ligne suivante permet de choisir une ligne au hasard dansle fichier
+    //La ligne suivante permet de choisir une ligne au hasard dans le fichier
     int random = (int)( Math.random()*36 + 1);
     for (int i = 0; i < random; i++)
      {
          ligne = lecture();
      }
-        
+        // On configure tous les boutons et les zones de textes
         int width = (int) ecran.getWidth();
         int height = (int) ecran.getHeight();
         
@@ -132,14 +132,15 @@ public bilingueFenetre() throws FileNotFoundException, IOException
         
         JLabel nomPage = new JLabel();
         nomPage.setFont(new Font("Berlin Sans FB", Font.PLAIN, 28));
-        nomPage.setBounds((int)(width*0.20),(int)(height*0.13), (int)(width*0.95),(int)(height*0.06));
+        nomPage.setBounds((int)(width*0.16),(int)(height*0.13), (int)(width*0.95),(int)(height*0.06));
         contenant.add(nomPage);
-        nomPage.setText("Traduisez les lettres et chiffres suivants en morse grâce aux touches '.' et '-'");
+        nomPage.setText("Traduisez les lettres et chiffres suivants en morse grâce aux touches '.' et '-', chaque lettre doit être suivie d'un espace.");
         
         JLabel mottrad = new JLabel();
         mottrad.setFont(new Font("Berlin Sans FB", Font.PLAIN, 28));
         mottrad.setBounds((int)(width*0.40),(int)(height*0.20), (int)(width*0.60),(int)(height*0.06));
         contenant.add(mottrad);
+        // ici on affiche le mot aléatoire à traduire 
         mottrad.setText("Traduire le mot : " + ligne );
         
         morse2 = new JTextField();
@@ -164,7 +165,7 @@ public bilingueFenetre() throws FileNotFoundException, IOException
         contenant.add(valider);
         valider.addActionListener(this);
         
-        System.out.println(count);
+        // Pour le niveau billingue, chaque fois que l'on réussit un niveau, on a +1, si l'on perd, on a -1 sur le compteur
         JLabel vousAvez = new JLabel();
         vousAvez.setBounds((int)(width*0.42),(int)(height*0.72),(int)(width*0.6),(int)(height*0.06));
         vousAvez.setText("Vous avez réussi " + (count) +  " niveaux.");

@@ -16,7 +16,6 @@ suis
 bjorg
 bobo
 chaise
-trousse
 586
 viande
 automobile
@@ -37,14 +36,24 @@ gesticuler
 oreille
 jus
 420
-69
 254
-4
-254
-6
-8745
-348
+874
 lunettes
+trousse 
+rafistoler
+gros
+grosse
+gris
+carnet
+blanc
+jaune
+vert
+noir
+gêne
+loin
+chanter
+aléatoire
+cartable
 
 
 
