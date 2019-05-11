@@ -70,8 +70,6 @@ public void actionPerformed(ActionEvent ev)
                 }
                 letter = letter + 1;  
             }
-            System.out.println(motEn);
-            System.out.println(morse3);
         if (morse2.getText().equalsIgnoreCase(motEn))
             {
                 count = count + 1;
@@ -169,6 +167,7 @@ public bilingueFenetre() throws FileNotFoundException, IOException
         JLabel vousAvez = new JLabel();
         vousAvez.setBounds((int)(width*0.42),(int)(height*0.72),(int)(width*0.6),(int)(height*0.06));
         vousAvez.setText("Vous avez réussi " + (count) +  " niveaux.");
+        vousAvez.setForeground(Color.blue);
         vousAvez.setFont(font2); 
         contenant.add(vousAvez);
     }

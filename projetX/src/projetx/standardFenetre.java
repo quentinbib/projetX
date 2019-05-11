@@ -110,8 +110,8 @@ public standardFenetre() throws FileNotFoundException, IOException
     //On selectionne le fichier qu'on va utiliser
     fR = new BufferedReader(new FileReader(new File("src/levels/niveaustandard.txt")));
     Dimension ecran = Toolkit.getDefaultToolkit().getScreenSize();
-    //La ligne suivante permet de choisir une ligne au hasard dansle fichier
-    int random = (int)( Math.random()*36 + 1);
+    //La ligne suivante permet de choisir une ligne au hasard dans le fichier
+    int random = (int)( Math.random()*56 + 1);
     for (int i = 0; i < random; i++)
      {
          ligne = lecture();
@@ -166,6 +166,7 @@ public standardFenetre() throws FileNotFoundException, IOException
         JLabel vousAvez = new JLabel();
         vousAvez.setBounds((int)(width*0.42),(int)(height*0.72),(int)(width*0.6),(int)(height*0.06));
         vousAvez.setText("Vous avez réussi " + (count) +  " niveaux.");
+        vousAvez.setForeground(Color.blue);
         vousAvez.setFont(font2); 
         contenant.add(vousAvez);
     }

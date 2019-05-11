@@ -1,6 +1,5 @@
 package projetx;
 // a chaque fois que l'on utilise un "outil" de netbeans, on doit l'importer 
-import sun.applet.Main;
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JButton;
@@ -75,6 +74,7 @@ public class accueilFen extends JFrame implements ActionListener
         Container contenant = getContentPane();
         getContentPane().setLayout(new FlowLayout());
         contenant.setLayout(null);
+        // le programme s'arrête si l'on ferme la fenêtre
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // Un Jlabel permet d'afficher un texte

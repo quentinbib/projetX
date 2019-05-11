@@ -1,3 +1,4 @@
+//easteregg
 package projetx;
 
 import java.awt.Container;
@@ -17,6 +18,7 @@ import javax.swing.JFrame;
 
 public class trad extends JFrame implements ActionListener
 {
+    // le symbole est semblable à un oeuf
     private JButton ¤;
     public void actionPerformed(ActionEvent ev)
     {

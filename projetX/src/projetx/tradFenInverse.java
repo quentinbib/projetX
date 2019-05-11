@@ -20,7 +20,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class tradFenInverse extends JFrame implements ActionListener
@@ -28,7 +27,6 @@ public class tradFenInverse extends JFrame implements ActionListener
     private JButton boutonValider;
     private JButton fleche;
     private JButton menu;
-    private JButton volume;
     private JTextField morse2;
     private JTextField francais;
 
@@ -37,6 +35,7 @@ public class tradFenInverse extends JFrame implements ActionListener
     
     public void actionPerformed(ActionEvent ev)
     {
+        // on remet la fleche sur cette page, de façon à ce qu'on puisse changer de mode de traduction autant qu'on veut
        if(ev.getSource() == fleche)
         {
            try 
@@ -54,7 +53,6 @@ public class tradFenInverse extends JFrame implements ActionListener
                Logger.getLogger(tradFenInverse.class.getName()).log(Level.SEVERE, null, ex);
            }
             setVisible(false);
-            //tradFenetre.setVisible(true);
         }
        if(ev.getSource() == menu)
         {
@@ -63,6 +61,7 @@ public class tradFenInverse extends JFrame implements ActionListener
         }
        if(ev.getSource() == boutonValider)
         {
+            //ici, la traduction est la même, on inverse juste les noms des tableaux car on traduit dans le sens inverse
             String nouvotexte = morse2.getText();
             String motEnMorse = "";
             int lettre = 0; 
