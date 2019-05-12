@@ -84,11 +84,12 @@ public void actionPerformed(ActionEvent ev)
             }
         else
             {
-            morse2.setText("reesayer");
+            morse2.setText("rééssayer");
             }
         }
         if(ev.getSource() == next)
         {
+            // l'utilisateur peut passer un niveau mais il perd un point dans son score
             count = count - 1;
             try 
             {
@@ -101,6 +102,7 @@ public void actionPerformed(ActionEvent ev)
         }
         if(ev.getSource() == retour)
         {
+            count = 0;
             entrainementFenetre fenetre = new entrainementFenetre();
             setVisible(false);
         }

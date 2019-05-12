@@ -139,7 +139,7 @@ public class tradFenetre extends JFrame implements ActionListener
             else
             {
                 Font font1 = new Font("", Font.PLAIN, 14);
-                morse2.setText("entrez_un_des_charactères_qui_figurent_sur_les_bords_de_l'écran");
+                morse2.setText("entrez_un_des_caractères_qui_figurent_sur_les_bords_de_l'écran");
                 morse2.setForeground(Color.red);
                 morse2.setFont(font1);
             } 
@@ -166,7 +166,7 @@ public class tradFenetre extends JFrame implements ActionListener
             String trait = "-";
             String point = ".";
             String espace = " ";
-            String erreur = "entrez_un_des_charactères_qui_figurent_sur_les_bords_de_l'écran";
+            String erreur = "entrez_un_des_caractères_qui_figurent_sur_les_bords_de_l'écran";
             String[] arrayDeString = texteCase.split("");
             //pour chaque type de caractère, on associe un son
             for (int i = 0; i < arrayDeString.length; i++) 

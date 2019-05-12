@@ -47,7 +47,7 @@ public class noobFenetre extends JFrame implements ActionListener
     private JButton valider;
     private JTextField morse2;
     static String ligne ="";
-    static String morse[] ={ ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","..."," -","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----",""};
+    static String morse[] ={ ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----",""};
     static String normal[] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9","0"," "};
      public void actionPerformed(ActionEvent ev)
      {
@@ -74,6 +74,7 @@ public class noobFenetre extends JFrame implements ActionListener
             
         if (morse2.getText().equalsIgnoreCase(motEnMorse))
         {
+            // Si on réussit à traduire, notre score augmente
             count = count + 1;
             try 
             {
@@ -86,16 +87,10 @@ public class noobFenetre extends JFrame implements ActionListener
         }
         else
         {
-            morse2.setText("reesayer");
+            morse2.setText("rééssayer");
             morse2.setForeground(Color.black);
             morse2.setFont(font1);
         }
-        }
-        if(ev.getSource() == retour)
-        {
-            count = 0;
-            entrainementFenetre fenetre = new entrainementFenetre();
-            setVisible(false);
         }
         // Si l'utilisateur n'arrive pas à traduire un mot, il peut passer à un autre mot
         if(ev.getSource() == next)
@@ -112,6 +107,8 @@ public class noobFenetre extends JFrame implements ActionListener
         //On peut toujours retourner au menu des niveaux dans les exercices
         if(ev.getSource() == retour)
         {
+            // si on quitte le niveau, le score se réinitialise
+            count = 0;
             entrainementFenetre fenetre = new entrainementFenetre();
             setVisible(false);
         }
@@ -211,7 +208,6 @@ public noobFenetre() throws FileNotFoundException, IOException
         MorseChiffre.setFont(font2); 
         contenant.add(MorseChiffre);
         
-        System.out.println(count);
         JLabel vousAvez = new JLabel();
         vousAvez.setBounds((int)(width*0.42),(int)(height*0.72),(int)(width*0.6),(int)(height*0.06));
         vousAvez.setText("Vous avez réussi " + (count) +  " niveaux.");

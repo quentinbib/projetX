@@ -84,12 +84,12 @@ public void actionPerformed(ActionEvent ev)
             }
         else
             {
-            morse2.setText("reesayer");
+            morse2.setText("rééssayer");
             }
         }
         if(ev.getSource() == next)
         {
-            count = count - 1;
+            count = count;
             try 
             {
                 standardFenetre fenetre = new standardFenetre();
@@ -101,6 +101,7 @@ public void actionPerformed(ActionEvent ev)
         }
         if(ev.getSource() == retour)
         {
+            count = 0;
             entrainementFenetre fenetre = new entrainementFenetre();
             setVisible(false);
         }
@@ -162,7 +163,6 @@ public standardFenetre() throws FileNotFoundException, IOException
         contenant.add(valider);
         valider.addActionListener(this);
         
-        System.out.println(count);
         JLabel vousAvez = new JLabel();
         vousAvez.setBounds((int)(width*0.42),(int)(height*0.72),(int)(width*0.6),(int)(height*0.06));
         vousAvez.setText("Vous avez réussi " + (count) +  " niveaux.");
