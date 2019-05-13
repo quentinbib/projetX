@@ -49,10 +49,10 @@ blanc
 jaune
 vert
 noir
-gêne
+gene
 loin
 chanter
-aléatoire
+aleatoire
 cartable
 
 

@@ -1,13 +1,13 @@
-﻿lampe halogène
-jambière
+﻿lampe halogene
+jambiere
 carte de self
-antépénultième
-après ski
+antepenultieme
+apres ski
 croquignole
 carabistouille
 faribole
 tintinnabuler
-brosse à dents
+brosse a dents
 brindezingues
 margouillis
 grenouille
@@ -15,16 +15,16 @@ fripouille
 gobelotter
 muscadin
 rhododendrons
-rhinocéros
+rhinoceros
 rhinopharyngite
 anticonstitutionnellement
 bouteille en plastique
-synthétisation
-synthétiseur
+synthetisation
+synthetiseur
 papier Joseph
 agroalimentation
-locomotive à vapeur
-parallélépipède
+locomotive a vapeur
+parallelepipede
 Il fait beau cette nuit
 lampe de chevet
 5cinq cents100
@@ -32,5 +32,5 @@ ad libitum
 tourner en bourrique
 tourner autour du pot
 une pierre 2 coups
-rape à fromage
-titiller le nénuphar
+rape a fromage
+titiller le nenuphar

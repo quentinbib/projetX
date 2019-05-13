@@ -47,7 +47,7 @@ public class bilingueFenetre extends JFrame implements ActionListener
     private JTextField morse2;
     public static int count = 0;
     static String ligne ;
-    static String morse[] ={ ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","..."," -","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----",""};
+    static String morse[] ={ ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----",""};
     static String normal[] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9","0"," "};
 public void actionPerformed(ActionEvent ev)
      {
@@ -70,7 +70,7 @@ public void actionPerformed(ActionEvent ev)
                 }
                 letter = letter + 1;  
             }
-        if (morse2.getText().equalsIgnoreCase(motEn))
+        if (morse3.equalsIgnoreCase(motEn))
             {
                 count = count + 1;
                 try 
