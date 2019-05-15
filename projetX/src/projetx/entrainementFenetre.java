@@ -82,7 +82,7 @@ public class entrainementFenetre extends JFrame implements ActionListener
         JLabel nomSite = new JLabel();
         nomSite.setFont(new Font("Algerian", Font.PLAIN, 28));
         // Pour que le texte sooit relativement centré sur n'importe quel écran on ne met pas 
-        nomSite.setBounds((int)(width/2.4),(int)(height*0.13), (int)(width*0.5),(int)(height*0.06));
+        nomSite.setBounds((int)(width*0.385),(int)(height*0.13), (int)(width*0.5),(int)(height*0.06));
         contenant.add(nomSite);
         nomSite.setText("Choisissez une difficulté :");
         

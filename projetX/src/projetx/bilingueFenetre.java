@@ -132,13 +132,13 @@ public bilingueFenetre() throws FileNotFoundException, IOException
         
         JLabel nomPage = new JLabel();
         nomPage.setFont(new Font("Berlin Sans FB", Font.PLAIN, 28));
-        nomPage.setBounds((int)(width*0.16),(int)(height*0.13), (int)(width*0.95),(int)(height*0.06));
+        nomPage.setBounds((int)(width*0.16),(int)(height*0.10), (int)(width*0.95),(int)(height*0.1));
         contenant.add(nomPage);
-        nomPage.setText("Traduisez les lettres et chiffres suivants en morse grâce aux touches '.' et '-', chaque lettre doit être suivie d'un espace.");
+        nomPage.setText("<html>Traduisez les lettres et chiffres suivants en morse grâce aux touches '.' et '-',<br/>                chaque lettre doit être suivie d'un espace.</html>");
         
         JLabel mottrad = new JLabel();
         mottrad.setFont(new Font("Berlin Sans FB", Font.PLAIN, 28));
-        mottrad.setBounds((int)(width*0.40),(int)(height*0.20), (int)(width*0.60),(int)(height*0.06));
+        mottrad.setBounds((int)(width*0.40),(int)(height*0.25), (int)(width*0.60),(int)(height*0.06));
         contenant.add(mottrad);
         // ici on affiche le mot aléatoire à traduire 
         mottrad.setText("Traduire le mot : " + ligne );

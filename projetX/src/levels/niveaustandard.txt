@@ -54,6 +54,3 @@ loin
 chanter
 aleatoire
 cartable
-
-
-
